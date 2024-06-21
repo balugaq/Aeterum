@@ -1,0 +1,18 @@
+name: Aeterum
+author: figgnus
+description: Slimefun addon for Aeterum Server
+main: me.figgnus.aeterum.Aeterum
+website: https://github.com/Slimefun/Addon-Template
+version: ${project.version}
+api-version: 1.14
+depend:
+- Slimefun
+commands:
+  tame:
+    description: "Spawns specific horse"
+    usage: /tame <god>
+    permission: aeterum.tame.admin
+    permission-message: "You don't have permission to use this command."
+  nightvision:
+    description: "Gives player nightvision"
+    usage: /nightvision
