@@ -1,4 +1,4 @@
-package me.figgnus.aeterum.items.utils;
+package me.figgnus.aeterum._items.utils;
 
 import org.bukkit.inventory.ItemStack;
 

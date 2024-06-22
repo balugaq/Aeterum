@@ -1,4 +1,4 @@
-package me.figgnus.aeterum.utils;
+package me.figgnus.aeterum._utils;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

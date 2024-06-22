@@ -14,9 +14,18 @@ import me.figgnus.aeterum.hades.NightVisionListener;
 import me.figgnus.aeterum.hades.ZombieHorseAbilityListener;
 import me.figgnus.aeterum.hades.ZombieHorseTameListener;
 import me.figgnus.aeterum.hermes.FlyingItemListener;
-import me.figgnus.aeterum.items.SlimefunItems;
-import me.figgnus.aeterum.utils.TameCommandExecutor;
-import me.figgnus.aeterum.utils.TameCommandTabCompleter;
+import me.figgnus.aeterum.hermes.SpeedBootsListener;
+import me.figgnus.aeterum.hermes.SpeedHorseAbilityListener;
+import me.figgnus.aeterum.hermes.SpeedHorseTameListener;
+import me.figgnus.aeterum._items.SlimefunItems;
+import me.figgnus.aeterum.poseidon.DolphinGraceListener;
+import me.figgnus.aeterum.poseidon.SeaHorseAbilityListener;
+import me.figgnus.aeterum.poseidon.SeaHorseTameListener;
+import me.figgnus.aeterum._utils.TameCommandExecutor;
+import me.figgnus.aeterum._utils.TameCommandTabCompleter;
+import me.figgnus.aeterum.zeus.BreedingItemListener;
+import me.figgnus.aeterum.zeus.PegasusAbilityListener;
+import me.figgnus.aeterum.zeus.PegasusTameListener;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
@@ -37,6 +46,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
     private SubItemGroup dionysusSubGroup;
     private SubItemGroup hadesSubGroup;
     private SubItemGroup hermesSubGroup;
+    private SubItemGroup poseidonSubGroup;
+    private SubItemGroup zeusSubGroup;
 
     // Slimefun Item Listeners
     private BetterBonemealListener betterBonemeal;
@@ -45,6 +56,13 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
     private DrunkHorseTameListener drunkHorseTame;
     private ZombieHorseTameListener zombiHorseTame;
     private FlyingItemListener flyingItem;
+    private SpeedBootsListener speedBoots;
+    private SpeedHorseTameListener speedHorseTame;
+    private SpeedHorseAbilityListener speedHorseAbility;
+    private SeaHorseTameListener seaHorseTame;
+    private BreedingItemListener breedingItem;
+    private PegasusTameListener pegasusTame;
+    private PegasusAbilityListener pegasusAbility;
 
     @Override
     public void onEnable() {
@@ -76,8 +94,16 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         NamespacedKey hermesSubGroupId = new NamespacedKey(this, "hermes");
         hermesSubGroup = new SubItemGroup(hermesSubGroupId, patroniGroup, hermesSubGroupItem);
 
+        ItemStack poseidonSubGroupItem = new CustomItemStack(Material.TRIDENT, "&ePoseidon", "", "&a> Click to open");
+        NamespacedKey poseidonSubGroupId = new NamespacedKey(this, "poseidon");
+        poseidonSubGroup = new SubItemGroup(poseidonSubGroupId, patroniGroup, poseidonSubGroupItem);
+
+        ItemStack zeusSubGroupItem = new CustomItemStack(Material.GOLDEN_SWORD, "&eZeus", "", "&a> Click to open");
+        NamespacedKey zeusSubGroupId = new NamespacedKey(this, "zeus");
+        zeusSubGroup = new SubItemGroup(zeusSubGroupId, patroniGroup, zeusSubGroupItem);
+
         // Items in "Demeter" subgroup
-        betterBonemeal = new BetterBonemealListener(demeterSubGroup, SlimefunItems.betterBonemealIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.betterBonemealRecipe);
+        betterBonemeal = new BetterBonemealListener(demeterSubGroup, SlimefunItems.betterBonemealIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.betterBonemealRecipe, this);
         betterBonemeal.register(this);
         growthPotion = new GrowthPotionListener(demeterSubGroup, SlimefunItems.growthPotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.growthPotionRecipe, this);
         growthPotion.register(this);
@@ -85,16 +111,35 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         flowerHorseTame.register(this);
 
         // Items in "Dionysus" subgroup
-        drunkHorseTame = new DrunkHorseTameListener(dionysusSubGroup, SlimefunItems.alcoholPotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.alcoholPotionRecipe, this);
+        drunkHorseTame = new DrunkHorseTameListener(dionysusSubGroup, SlimefunItems.drunkHorseTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.drunkHorseTameRecipe, this);
         drunkHorseTame.register(this);
 
         // Items in "Hades" subgroup
-        zombiHorseTame = new ZombieHorseTameListener(hadesSubGroup, SlimefunItems.deathPotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.deathPotionRecipe, this);
+        zombiHorseTame = new ZombieHorseTameListener(hadesSubGroup, SlimefunItems.zombieHorseTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.zombieHorseTameRecipe, this);
         zombiHorseTame.register(this);
 
         // Items in "Hermes" subgroup
         flyingItem = new FlyingItemListener(hermesSubGroup, SlimefunItems.flyingItemIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.flyingItemRecipe, this);
         flyingItem.register(this);
+        speedBoots = new SpeedBootsListener(hermesSubGroup, SlimefunItems.speedBootsIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.speedBootsRecipe, this);
+        speedBoots.register(this);
+        speedHorseTame = new SpeedHorseTameListener(hermesSubGroup, SlimefunItems.speedHorseTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.speedHorseTameRecipe, this);
+        speedHorseTame.register(this);
+        speedHorseAbility = new SpeedHorseAbilityListener(hermesSubGroup, SlimefunItems.horseSpeedPotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.horseSpeedPotionRecipe, this);
+        speedHorseAbility.register(this);
+
+        // Items in "Poseidon" subgroup
+        seaHorseTame = new SeaHorseTameListener(poseidonSubGroup, SlimefunItems.seaHorseTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.seaHorseTameRecipe, this);
+        seaHorseTame.register(this);
+
+        // Items in "Zeus" subgroup
+        breedingItem = new BreedingItemListener(zeusSubGroup, SlimefunItems.breedingItemIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.breedingItemRecipe, this);
+        breedingItem.register(this);
+        pegasusTame = new PegasusTameListener(zeusSubGroup, SlimefunItems.pegasusTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.pegasusTameRecipe,this);
+        pegasusTame.register(this);
+        pegasusAbility = new PegasusAbilityListener(zeusSubGroup, SlimefunItems.horseLevitatePotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.horseLevitatePotionRecipe, this);
+        pegasusAbility.register(this);
+
 
         // Event Listeners
         // Group Permission
@@ -105,6 +150,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         DrunkHorseAbilityListener drunkHorseAbilityListener = new DrunkHorseAbilityListener(this);
         ZombieHorseAbilityListener zombieHorseAbilityListener = new ZombieHorseAbilityListener(this);
         NightVisionListener nightVisionListener = new NightVisionListener();
+        DolphinGraceListener dolphinGraceListener = new DolphinGraceListener();
+        SeaHorseAbilityListener seaHorseAbilityListener = new SeaHorseAbilityListener(this);
         // Demeter Listeners
         getServer().getPluginManager().registerEvents(flowerHorseAbilityListener, this);
         // Dionysus Listneres
@@ -112,10 +159,14 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         // Hades Listeners
         getServer().getPluginManager().registerEvents(zombieHorseAbilityListener, this);
         getServer().getPluginManager().registerEvents(nightVisionListener, this);
+        // Poseidon Listeners
+        getServer().getPluginManager().registerEvents(dolphinGraceListener, this);
+        getServer().getPluginManager().registerEvents(seaHorseAbilityListener, this);
 
         // Command executor
         getCommand("tame").setExecutor(new TameCommandExecutor(this));
         getCommand("nightvision").setExecutor(nightVisionListener);
+        getCommand("dolphingrace").setExecutor(dolphinGraceListener);
         // Tab completer
         getCommand("tame").setTabCompleter(new TameCommandTabCompleter());
     }
@@ -150,6 +201,43 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
             hadesSubGroup.remove(zombiHorseTame);
         }else {
             hadesSubGroup.add(zombiHorseTame);
+        }
+    }
+    @EventHandler
+    public void checkHermesPermission(PlayerRightClickEvent event){
+        Player player = event.getPlayer();
+        if (!player.hasPermission("aeterum.hermes")){
+            hermesSubGroup.remove(flyingItem);
+            hermesSubGroup.remove(speedBoots);
+            hermesSubGroup.remove(speedHorseTame);
+            hermesSubGroup.remove(speedHorseAbility);
+        }else {
+            hermesSubGroup.add(flyingItem);
+            hermesSubGroup.add(speedBoots);
+            hermesSubGroup.add(speedHorseTame);
+            hermesSubGroup.add(speedHorseAbility);
+        }
+    }
+    @EventHandler
+    public void checkPoseidonPermission(PlayerRightClickEvent event){
+        Player player = event.getPlayer();
+        if (!player.hasPermission("aeterum.poseidon")){
+            poseidonSubGroup.remove(seaHorseTame);
+        }else {
+            poseidonSubGroup.add(seaHorseTame);
+        }
+    }
+    @EventHandler
+    public void checkZeusPermission(PlayerRightClickEvent event){
+        Player player = event.getPlayer();
+        if (!player.hasPermission("aeterum.zeus")){
+            zeusSubGroup.remove(breedingItem);
+            zeusSubGroup.remove(pegasusTame);
+            zeusSubGroup.remove(pegasusAbility);
+        }else {
+            zeusSubGroup.add(breedingItem);
+            zeusSubGroup.add(pegasusTame);
+            zeusSubGroup.add(pegasusAbility);
         }
     }
     //methods for making metadata of entities persistent

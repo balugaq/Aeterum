@@ -1,9 +1,12 @@
-package me.figgnus.aeterum.utils;
+package me.figgnus.aeterum._utils;
 
 import me.figgnus.aeterum.Aeterum;
 import me.figgnus.aeterum.demeter.FlowerHorseTameListener;
 import me.figgnus.aeterum.dionysos.DrunkHorseTameListener;
 import me.figgnus.aeterum.hades.ZombieHorseTameListener;
+import me.figgnus.aeterum.hermes.SpeedHorseTameListener;
+import me.figgnus.aeterum.poseidon.SeaHorseTameListener;
+import me.figgnus.aeterum.zeus.PegasusTameListener;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -51,6 +54,15 @@ public class TameCommandExecutor implements CommandExecutor {
                 break;
             case "hades":
                 spawnHorse(player, EntityType.ZOMBIE_HORSE, ZombieHorseTameListener.LAVA_WALKER, null);
+                break;
+            case "hermes":
+                spawnHorse(player, EntityType.HORSE, SpeedHorseTameListener.SPEED_KEY, Horse.Color.CREAMY);
+                break;
+            case "poseidon":
+                spawnHorse(player, EntityType.HORSE, SeaHorseTameListener.FROST_WALKER_KEY, Horse.Color.BLACK);
+                break;
+            case "zeus":
+                spawnHorse(player, EntityType.HORSE, PegasusTameListener.LEVITATE_KEY, Horse.Color.WHITE);
                 break;
             default:
                 player.sendMessage("Unknown horse type: " + action);

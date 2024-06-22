@@ -6,11 +6,16 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import me.figgnus.aeterum.Aeterum;
+import me.figgnus.aeterum._items.utils.ItemUtils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -19,41 +24,44 @@ import java.util.UUID;
 public class BetterBonemealListener extends SlimefunItem implements Listener {
     private final HashMap<UUID, Long> cooldowns = new HashMap<>();
     private static final int COOLDOWN_TIME = 100;// Cooldown time in milliseconds
+    private final Aeterum plugin;
 
-    public BetterBonemealListener(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public BetterBonemealListener(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, Aeterum plugin) {
         super(itemGroup, item, recipeType, recipe);
-    }
+        this.plugin = plugin;
 
-    @Override
-    public void preRegister() {
-        ItemUseHandler itemUseHandler = this::onBlockRightClick;
-        addItemHandler(itemUseHandler);
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
-
-    private void onBlockRightClick(PlayerRightClickEvent event) {
+    @EventHandler
+    private void onBlockRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        long currentTime = System.currentTimeMillis();
-        if (cooldowns.containsKey(player.getUniqueId())) {
-            long lastUseTime = cooldowns.get(player.getUniqueId());
-            if (currentTime - lastUseTime < COOLDOWN_TIME) {
-                return;
-            }
-        }
-        Block block = event.getInteractEvent().getClickedBlock();
-        if (block != null && (block.getType() == Material.CACTUS || block.getType() == Material.SUGAR_CANE)) {
-            Block above = block.getRelative(BlockFace.UP);
+        ItemStack item = event.getItem();
+        if (ItemUtils.isOurCustomItem(item, getItemName())){
             if (!player.hasPermission("aeterum.demeter.use")){
                 player.sendMessage(ChatColor.RED + "You don't have permission to do this.");
                 return;
             }
-            if (above.getType() == Material.AIR) {
-                // Grow cactus or sugar cane
-                above.setType(block.getType());
-                spawnGrowthParticle(above.getLocation().add(0.5, 0.5, 0.5));
-                if (player.getGameMode() == GameMode.SURVIVAL) {
-                    event.getItem().setAmount(event.getItem().getAmount() - 1);
+            long currentTime = System.currentTimeMillis();
+            if (cooldowns.containsKey(player.getUniqueId())) {
+                long lastUseTime = cooldowns.get(player.getUniqueId());
+                if (currentTime - lastUseTime < COOLDOWN_TIME) {
+                    return;
                 }
-                cooldowns.put(player.getUniqueId(), currentTime);
+            }
+            if (event.getAction() == Action.RIGHT_CLICK_BLOCK){
+                Block block = event.getClickedBlock();
+                if (block != null && (block.getType() == Material.CACTUS || block.getType() == Material.SUGAR_CANE)) {
+                    Block above = block.getRelative(BlockFace.UP);
+                    if (above.getType() == Material.AIR) {
+                        // Grow cactus or sugar cane
+                        above.setType(block.getType());
+                        spawnGrowthParticle(above.getLocation().add(0.5, 0.5, 0.5));
+                        if (player.getGameMode() == GameMode.SURVIVAL) {
+                            event.getItem().setAmount(event.getItem().getAmount() - 1);
+                        }
+                        cooldowns.put(player.getUniqueId(), currentTime);
+                    }
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-package me.figgnus.aeterum.demeter;
+package me.figgnus.aeterum.zeus;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -19,13 +19,13 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
 
-public class FlowerHorseTameListener extends SlimefunItem implements Listener {
+public class PegasusTameListener extends SlimefunItem implements Listener {
     private final Aeterum plugin;
-    private final String METADATA_KEY = "DemeterFeed";
-    public static final String SEED_KEY = "Seed";
+    private final String METADATA_KEY = "ZeusFeed";
+    public static final String LEVITATE_KEY = "Levitate";
     Random random = new Random();
 
-    public FlowerHorseTameListener(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, Aeterum plugin) {
+    public PegasusTameListener(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, Aeterum plugin) {
         super(itemGroup, item, recipeType, recipe);
         this.plugin = plugin;
 
@@ -37,20 +37,18 @@ public class FlowerHorseTameListener extends SlimefunItem implements Listener {
             Horse horse = (Horse) event.getRightClicked();
             Player player = event.getPlayer();
             ItemStack item = player.getInventory().getItemInMainHand();
-
             if (ItemUtils.isOurCustomItem(item, getItemName())){
-                if (!player.hasPermission("aeterum.demeter.use")) {
+                if (!player.hasPermission("aeterum.zeus.use")) {
                     player.sendMessage(ChatColor.RED + "You don't have permission to do this.");
                     return;
                 }
-                // Consume one item from the stack
                 if (player.getGameMode() == GameMode.SURVIVAL){
                     item.setAmount(item.getAmount() - 1);
                 }
                 // Set metadata to indicate the horse has been fed the special item
                 plugin.setEntityMetadata(horse, METADATA_KEY, "true");
-                // Set metadata to indicate the horse has frost walker ability
-                plugin.setEntityMetadata(horse, SEED_KEY, "true");
+                plugin.setEntityMetadata(horse, LEVITATE_KEY, "true");
+
                 player.sendMessage("Nakrmil/a jsi koně lektvarem. Niní můžeš koně ochočit.");
             }
         }
@@ -70,7 +68,7 @@ public class FlowerHorseTameListener extends SlimefunItem implements Listener {
                 int health = random.nextInt(25, 30);
 
                 // Change horse appearance and stats
-                horse.setColor(Horse.Color.GRAY);
+                horse.setColor(Horse.Color.WHITE);
                 horse.setOwner(player);
 
                 // Set horse stats
@@ -79,10 +77,10 @@ public class FlowerHorseTameListener extends SlimefunItem implements Listener {
                 horse.setMaxHealth(health);
                 horse.setHealth(health);
 
-                player.sendMessage("Tvůj kůň se proměnil.");
+                player.sendMessage("Your horse has transformed!");
 
                 // Remove the metadata so it doesn't affect future taming
-                // horse.removeMetadata(METADATA_KEY, plugin);
+                horse.removeMetadata(METADATA_KEY, plugin);
             }
         }
     }

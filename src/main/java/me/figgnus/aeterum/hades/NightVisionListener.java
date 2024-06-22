@@ -24,7 +24,7 @@ public class NightVisionListener implements Listener, CommandExecutor {
         Player player = event.getPlayer();
         Block block = player.getLocation().getBlock();
 
-        if (player.hasPermission("aeterum.nightvision.use") && enabledPlayers.contains(player.getUniqueId())){
+        if (player.hasPermission("aeterum.nightvision.toggle") && enabledPlayers.contains(player.getUniqueId())){
             if (isUnderground(player) && isLowLightLevel(block)) {
                 player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 400, 1, true, false));
             }else {
@@ -48,7 +48,7 @@ public class NightVisionListener implements Listener, CommandExecutor {
             return true;
         }
         Player player = (Player) sender;
-        if (!player.hasPermission("aeterum.nightvision.use")){
+        if (!player.hasPermission("aeterum.nightvision.toggle")){
             player.sendMessage(ChatColor.RED + " You don't have permission to toggle Dolphin's Grace.");
             return true;
         }

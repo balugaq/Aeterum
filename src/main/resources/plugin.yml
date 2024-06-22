@@ -16,3 +16,6 @@ commands:
   nightvision:
     description: "Gives player nightvision"
     usage: /nightvision
+  dolphingrace:
+    description: "Gives player dolphin's grace"
+    usage: /dolphingrace

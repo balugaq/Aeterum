@@ -5,7 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.figgnus.aeterum.Aeterum;
-import me.figgnus.aeterum.items.utils.ItemUtils;
+import me.figgnus.aeterum._items.utils.ItemUtils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
@@ -32,6 +32,9 @@ public class GrowthPotionListener extends SlimefunItem implements Listener {
             if (!player.hasPermission("aeterum.demeter.use")){
                 player.sendMessage(ChatColor.RED + "You don't have permission to do this.");
                 return;
+            }
+            if (player.getGameMode() == GameMode.SURVIVAL){
+                consumedItem.setAmount(consumedItem.getAmount() - 1);
             }
             applyGrowthEffect(event.getPlayer());
         }
