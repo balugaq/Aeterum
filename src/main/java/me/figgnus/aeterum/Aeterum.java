@@ -1,9 +1,12 @@
 package me.figgnus.aeterum;
 
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import me.figgnus.aeterum._items.item_listener.RandomizerListener;
+import me.figgnus.aeterum._utils.SnowballDemageListener;
 import me.figgnus.aeterum.demeter.BetterBonemealListener;
 import me.figgnus.aeterum.demeter.FlowerHorseAbilityListener;
 import me.figgnus.aeterum.demeter.FlowerHorseTameListener;
@@ -63,6 +66,7 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
     private BreedingItemListener breedingItem;
     private PegasusTameListener pegasusTame;
     private PegasusAbilityListener pegasusAbility;
+    private RandomizerListener randomizer;
 
     @Override
     public void onEnable() {
@@ -76,6 +80,10 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         ItemStack patroniGroupItem = new CustomItemStack(Material.APPLE, "&ePatroni", "", "&a> Click to open");
         NamespacedKey patroniGroupId = new NamespacedKey(this, "patroni");
         NestedItemGroup patroniGroup = new NestedItemGroup(patroniGroupId, patroniGroupItem);
+
+        ItemStack toolsGroupItem = new CustomItemStack(Material.NETHERITE_PICKAXE, "&eTools +", "", "&a> Click to open");
+        NamespacedKey toolsGroupId = new NamespacedKey(this, "tools_plus");
+        ItemGroup toolsGroup = new ItemGroup(toolsGroupId, toolsGroupItem);
 
         // Register sub groups for patroni
         ItemStack demeterSubGroupItem = new CustomItemStack(Material.FLOWER_POT, "&eDemeter", "", "&a> Click to open");
@@ -140,6 +148,10 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         pegasusAbility = new PegasusAbilityListener(zeusSubGroup, SlimefunItems.horseLevitatePotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.horseLevitatePotionRecipe, this);
         pegasusAbility.register(this);
 
+        // Items in "Tools +" subgroup
+        randomizer = new RandomizerListener(toolsGroup, SlimefunItems.randomizerIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.randomizerRecipe, this);
+        randomizer.register(this);
+
 
         // Event Listeners
         // Group Permission
@@ -152,6 +164,7 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         NightVisionListener nightVisionListener = new NightVisionListener();
         DolphinGraceListener dolphinGraceListener = new DolphinGraceListener();
         SeaHorseAbilityListener seaHorseAbilityListener = new SeaHorseAbilityListener(this);
+        SnowballDemageListener snowballDemageListener = new SnowballDemageListener();
         // Demeter Listeners
         getServer().getPluginManager().registerEvents(flowerHorseAbilityListener, this);
         // Dionysus Listneres
@@ -162,6 +175,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         // Poseidon Listeners
         getServer().getPluginManager().registerEvents(dolphinGraceListener, this);
         getServer().getPluginManager().registerEvents(seaHorseAbilityListener, this);
+        // Other Listeners
+        getServer().getPluginManager().registerEvents(snowballDemageListener, this);
 
         // Command executor
         getCommand("tame").setExecutor(new TameCommandExecutor(this));

@@ -11,6 +11,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
@@ -34,21 +35,23 @@ public class FlyingItemListener extends SlimefunItem implements Listener {
                 player.sendMessage(ChatColor.RED + "You can't use this item.");
                 return;
             }
-            ItemMeta meta = item.getItemMeta();
-            Damageable damageable = (Damageable) meta;
-            int currentDamage = damageable.getDamage();
-            if (currentDamage == item.getType().getMaxDurability()){
-                return;
-            }
-            if (event.getPlayer().isGliding()) {
-                // Propel the player
-                Vector direction = event.getPlayer().getLocation().getDirection();
-                event.getPlayer().setVelocity(direction.multiply(1.5)); // Adjust the multiplier for speed
+            if (event.getAction() == Action.RIGHT_CLICK_AIR){
+                ItemMeta meta = item.getItemMeta();
+                Damageable damageable = (Damageable) meta;
+                int currentDamage = damageable.getDamage();
+                if (currentDamage == item.getType().getMaxDurability()){
+                    return;
+                }
+                if (event.getPlayer().isGliding()) {
+                    // Propel the player
+                    Vector direction = event.getPlayer().getLocation().getDirection();
+                    event.getPlayer().setVelocity(direction.multiply(1.5)); // Adjust the multiplier for speed
 
-                event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1f,1f);
+                    event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1f,1f);
 
-                // Reduce the durability of the item
-                adjustItemDurability(item, 1);
+                    // Reduce the durability of the item
+                    adjustItemDurability(item, 1);
+                }
             }
         }
     }

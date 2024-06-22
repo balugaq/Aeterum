@@ -94,4 +94,11 @@ public class SlimefunItems {
             null, new ItemStack(Material.BONE_BLOCK), null,
             null, null, null,
     };
+    // Pegasus Ability
+    public static final SlimefunItemStack randomizerIS = new SlimefunItemStack("RANDOMIZER", Material.IRON_SHOVEL, "&aRandomizer", "", "&7Položí náhodný block s hotbaru");
+    public static final ItemStack[] randomizerRecipe = {
+            null, null, null,
+            null, new ItemStack(Material.BONE_BLOCK), null,
+            null, null, null,
+    };
 }
