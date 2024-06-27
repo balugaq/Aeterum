@@ -5,30 +5,31 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import me.figgnus.aeterum._items.item_listener.RandomizerListener;
-import me.figgnus.aeterum._utils.SnowballDemageListener;
-import me.figgnus.aeterum.demeter.BetterBonemealListener;
-import me.figgnus.aeterum.demeter.FlowerHorseAbilityListener;
-import me.figgnus.aeterum.demeter.FlowerHorseTameListener;
-import me.figgnus.aeterum.demeter.GrowthPotionListener;
-import me.figgnus.aeterum.dionysos.DrunkHorseAbilityListener;
-import me.figgnus.aeterum.dionysos.DrunkHorseTameListener;
-import me.figgnus.aeterum.hades.NightVisionListener;
-import me.figgnus.aeterum.hades.ZombieHorseAbilityListener;
-import me.figgnus.aeterum.hades.ZombieHorseTameListener;
-import me.figgnus.aeterum.hermes.FlyingItemListener;
-import me.figgnus.aeterum.hermes.SpeedBootsListener;
-import me.figgnus.aeterum.hermes.SpeedHorseAbilityListener;
-import me.figgnus.aeterum.hermes.SpeedHorseTameListener;
-import me.figgnus.aeterum._items.SlimefunItems;
-import me.figgnus.aeterum.poseidon.DolphinGraceListener;
-import me.figgnus.aeterum.poseidon.SeaHorseAbilityListener;
-import me.figgnus.aeterum.poseidon.SeaHorseTameListener;
-import me.figgnus.aeterum._utils.TameCommandExecutor;
-import me.figgnus.aeterum._utils.TameCommandTabCompleter;
-import me.figgnus.aeterum.zeus.BreedingItemListener;
-import me.figgnus.aeterum.zeus.PegasusAbilityListener;
-import me.figgnus.aeterum.zeus.PegasusTameListener;
+import me.figgnus.aeterum.brewery_menu.BreweryMenu;
+import me.figgnus.aeterum.items.item_listener.RandomizerListener;
+import me.figgnus.aeterum.utils.SnowballDemageListener;
+import me.figgnus.aeterum.gods.demeter.BetterBonemealListener;
+import me.figgnus.aeterum.gods.demeter.FlowerHorseAbilityListener;
+import me.figgnus.aeterum.gods.demeter.FlowerHorseTameListener;
+import me.figgnus.aeterum.gods.demeter.GrowthPotionListener;
+import me.figgnus.aeterum.gods.dionysos.DrunkHorseAbilityListener;
+import me.figgnus.aeterum.gods.dionysos.DrunkHorseTameListener;
+import me.figgnus.aeterum.gods.hades.NightVisionListener;
+import me.figgnus.aeterum.gods.hades.ZombieHorseAbilityListener;
+import me.figgnus.aeterum.gods.hades.ZombieHorseTameListener;
+import me.figgnus.aeterum.gods.hermes.FlyingItemListener;
+import me.figgnus.aeterum.gods.hermes.SpeedBootsListener;
+import me.figgnus.aeterum.gods.hermes.SpeedHorseAbilityListener;
+import me.figgnus.aeterum.gods.hermes.SpeedHorseTameListener;
+import me.figgnus.aeterum.items.SlimefunItems;
+import me.figgnus.aeterum.gods.poseidon.DolphinGraceListener;
+import me.figgnus.aeterum.gods.poseidon.SeaHorseAbilityListener;
+import me.figgnus.aeterum.gods.poseidon.SeaHorseTameListener;
+import me.figgnus.aeterum.utils.TameCommandExecutor;
+import me.figgnus.aeterum.utils.TameCommandTabCompleter;
+import me.figgnus.aeterum.gods.zeus.BreedingItemListener;
+import me.figgnus.aeterum.gods.zeus.PegasusAbilityListener;
+import me.figgnus.aeterum.gods.zeus.PegasusTameListener;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
@@ -184,6 +185,10 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         getCommand("dolphingrace").setExecutor(dolphinGraceListener);
         // Tab completer
         getCommand("tame").setTabCompleter(new TameCommandTabCompleter());
+
+
+        // register brewery menu
+        new BreweryMenu(this);
     }
     // Permission check Event Handlers
     @EventHandler
