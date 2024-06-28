@@ -122,37 +122,37 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         flowerHorseTame.register(this);
 
         // Items in "Dionysus" subgroup
-        drunkHorseTame = new DrunkHorseTameListener(dionysusSubGroup, SlimefunItems.drunkHorseTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.drunkHorseTameRecipe, this);
+        drunkHorseTame = SlimefunItems.dionysusTame(dionysusSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         drunkHorseTame.register(this);
 
         // Items in "Hades" subgroup
-        zombiHorseTame = new ZombieHorseTameListener(hadesSubGroup, SlimefunItems.zombieHorseTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.zombieHorseTameRecipe, this);
+        zombiHorseTame = SlimefunItems.hadesTame(hadesSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         zombiHorseTame.register(this);
 
         // Items in "Hermes" subgroup
-        flyingItem = new FlyingItemListener(hermesSubGroup, SlimefunItems.flyingItemIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.flyingItemRecipe, this);
+        flyingItem = SlimefunItems.flyingItem(hermesSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         flyingItem.register(this);
-        speedBoots = new SpeedBootsListener(hermesSubGroup, SlimefunItems.speedBootsIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.speedBootsRecipe, this);
+        speedBoots = SlimefunItems.speedBoots(hermesSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         speedBoots.register(this);
-        speedHorseTame = new SpeedHorseTameListener(hermesSubGroup, SlimefunItems.speedHorseTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.speedHorseTameRecipe, this);
+        speedHorseTame = SlimefunItems.hermesTame(hermesSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         speedHorseTame.register(this);
-        speedHorseAbility = new SpeedHorseAbilityListener(hermesSubGroup, SlimefunItems.horseSpeedPotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.horseSpeedPotionRecipe, this);
+        speedHorseAbility = SlimefunItems.horseSpeedPotion(hermesSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         speedHorseAbility.register(this);
 
         // Items in "Poseidon" subgroup
-        seaHorseTame = new SeaHorseTameListener(poseidonSubGroup, SlimefunItems.seaHorseTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.seaHorseTameRecipe, this);
+        seaHorseTame = SlimefunItems.poseidonTame(poseidonSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         seaHorseTame.register(this);
 
         // Items in "Zeus" subgroup
-        breedingItem = new BreedingItemListener(zeusSubGroup, SlimefunItems.breedingItemIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.breedingItemRecipe, this);
+        breedingItem = SlimefunItems.breedingItem(zeusSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         breedingItem.register(this);
-        pegasusTame = new PegasusTameListener(zeusSubGroup, SlimefunItems.pegasusTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.pegasusTameRecipe,this);
+        pegasusTame = SlimefunItems.zeusTame(zeusSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         pegasusTame.register(this);
-        pegasusAbility = new PegasusAbilityListener(zeusSubGroup, SlimefunItems.horseLevitatePotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.horseLevitatePotionRecipe, this);
+        pegasusAbility = SlimefunItems.horseLevitatePotion(zeusSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         pegasusAbility.register(this);
 
         // Items in "Tools +" subgroup
-        randomizer = new RandomizerListener(toolsGroup, SlimefunItems.randomizerIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.randomizerRecipe, this);
+        randomizer = SlimefunItems.randomizer(toolsGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         randomizer.register(this);
 
 
