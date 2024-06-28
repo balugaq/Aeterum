@@ -1,29 +1,50 @@
 package me.figgnus.aeterum.items;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import me.figgnus.aeterum.Aeterum;
+import me.figgnus.aeterum.gods.demeter.BetterBonemealListener;
+import me.figgnus.aeterum.gods.demeter.FlowerHorseTameListener;
+import me.figgnus.aeterum.gods.demeter.GrowthPotionListener;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
 
 public class SlimefunItems {
-    // Better Bonemeal
-    public static final SlimefunItemStack betterBonemealIS = new SlimefunItemStack("BETTER_BONEMEAL", Material.SUGAR, "&aBetter Bonemeal", "", "&7Bonemeal který se dá použít na Cactus a Sugar Cane");
-    public static final ItemStack[] betterBonemealRecipe = {
-            new ItemStack(Material.BONE_MEAL), null, new ItemStack(Material.BONE_MEAL),
-            null, new ItemStack(Material.CACTUS), null,
-            new ItemStack(Material.BONE_MEAL), null, new ItemStack(Material.BONE_MEAL),
-    };
-    // Demeter tame item
-    public static final SlimefunItemStack flowerHorseTameIS = new SlimefunItemStack("FLOWER_HORSE_TAME", Material.POTION, "&aFlower Potion", "", "&7Lektvar kterým Demeter může ochočit svého koňe");
-    public static final ItemStack[] flowerHorseTameRecipe = {
-            null,null,null,null,new ItemStack(Material.FLOWERING_AZALEA),null,null,null,null
-    };
-    // Growth potion
-    public static final SlimefunItemStack growthPotionIS = new SlimefunItemStack("GROWTH_POTION", Material.POTION, "&aGrowth Potion", "", "&7Lektvar který urychlý růst rostlin v okolí hráče");
-    public static final ItemStack[] growthPotionRecipe = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
-    };
+    // Better Bone Meal
+    public static BetterBonemealListener betterBonemeal(SubItemGroup itemGroup, RecipeType recipeType, Aeterum plugin){
+        SlimefunItemStack betterBonemealIS = new SlimefunItemStack("BETTER_BONEMEAL", Material.SUGAR, "&aBetter Bonemeal", "", "&7Bonemeal který se dá použít na Cactus a Sugar Cane");
+        ItemStack[] betterBonemealRecipe = {
+                new ItemStack(Material.BONE_MEAL), null, new ItemStack(Material.BONE_MEAL),
+                null, new ItemStack(Material.CACTUS), null,
+                new ItemStack(Material.BONE_MEAL), null, new ItemStack(Material.BONE_MEAL),
+        };
+        return new BetterBonemealListener(itemGroup, betterBonemealIS, recipeType, betterBonemealRecipe, plugin);
+    }
+    // Growth Potion
+    public static GrowthPotionListener growthPotion(SubItemGroup itemGroup, RecipeType recipeType, Aeterum plugin){
+        SlimefunItemStack growthPotionIS = new SlimefunItemStack("GROWTH_POTION", Material.POTION, "&aGrowth Potion", "", "&7Lektvar který urychlý růst rostlin v okolí hráče");
+        ItemStack[] growthPotionRecipe = {
+                null, null, null,
+                null, new ItemStack(Material.BONE_BLOCK), null,
+                null, null, null,
+        };
+        configureMeta(growthPotionIS, Color.fromRGB(63,206,130));
+        return new GrowthPotionListener(itemGroup, growthPotionIS, recipeType, growthPotionRecipe, plugin);
+    }
+    // Demeter Horse Tame
+    public static FlowerHorseTameListener demeterTame(SubItemGroup itemGroup, RecipeType recipeType, Aeterum plugin){
+        SlimefunItemStack flowerHorseTameIS = new SlimefunItemStack("FLOWER_HORSE_TAME", Material.POTION, "&aFlower Potion", "", "&7Lektvar kterým Demeter může ochočit svého koňe");
+        ItemStack[] flowerHorseTameRecipe = {
+                null,null,null,null,new ItemStack(Material.FLOWERING_AZALEA),null,null,null,null
+        };
+        configureMeta(flowerHorseTameIS, Color.fromRGB(26,112,66));
+        return new FlowerHorseTameListener(itemGroup, flowerHorseTameIS, recipeType, flowerHorseTameRecipe, plugin);
+    }
+
+
     // Dionysus tame item
     public static final SlimefunItemStack drunkHorseTameIS = new SlimefunItemStack("DRUNK_HORSE_TAME", Material.POTION, "&aAlcohol Potion", "", "&7Lektvar kterým Dionysus může ochočit svého koňe");
     public static final ItemStack[] drunkHorseTameRecipe = {
@@ -101,4 +122,11 @@ public class SlimefunItems {
             null, new ItemStack(Material.BONE_BLOCK), null,
             null, null, null,
     };
+
+    public static void configureMeta(SlimefunItemStack item, Color color) {
+        PotionMeta meta = (PotionMeta) item.getItemMeta();
+        assert meta != null;
+        meta.setColor(color);
+        item.setItemMeta(meta);
+    }
 }

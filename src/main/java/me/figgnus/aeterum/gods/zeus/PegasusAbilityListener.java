@@ -80,7 +80,7 @@ public class PegasusAbilityListener extends SlimefunItem implements Listener {
                             return;
                         }
                         // Spawn particles at the horse's location
-                        horse.getWorld().spawnParticle(Particle.SPELL, horse.getLocation().add(0, 1, 0), 10, 0.5, 0.5, 0.5, 0.05);
+                        horse.getWorld().spawnParticle(Particle.CLOUD, horse.getLocation().add(0, 1, 0), 10, 0.5, 0.5, 0.5, 0.05);
                     }
                 }.runTaskTimer(plugin, 0, 5); // Run task every 5 ticks (0.25 seconds)
             }

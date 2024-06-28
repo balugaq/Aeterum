@@ -48,7 +48,7 @@ public class SeaHorseAbilityListener implements Listener {
                         blockUnder.setType(Material.FROSTED_ICE);
 
                         // Spawn particle effect when converting to water
-                        blockUnder.getWorld().spawnParticle(Particle.SNOWBALL, blockUnder.getLocation().add(0.5, 0.5, 0.5), 10, 0.2, 0.2, 0.2, 0.02);
+                        blockUnder.getWorld().spawnParticle(Particle.SNOWFLAKE, blockUnder.getLocation().add(0.5, 0.5, 0.5), 10, 0.2, 0.2, 0.2, 0.02);
 
 
                         // Schedule a task to revert ice back to water after a delay

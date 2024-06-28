@@ -87,7 +87,7 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         ItemGroup toolsGroup = new ItemGroup(toolsGroupId, toolsGroupItem);
 
         // Register sub groups for patroni
-        ItemStack demeterSubGroupItem = new CustomItemStack(Material.FLOWER_POT, "&eDemeter", "", "&a> Click to open");
+        ItemStack demeterSubGroupItem = new CustomItemStack(Material.PINK_PETALS, "&eDemeter", "", "&a> Click to open");
         NamespacedKey demeterSubGroupId = new NamespacedKey(this, "demeter");
         demeterSubGroup = new SubItemGroup(demeterSubGroupId, patroniGroup, demeterSubGroupItem);
 
@@ -111,12 +111,14 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         NamespacedKey zeusSubGroupId = new NamespacedKey(this, "zeus");
         zeusSubGroup = new SubItemGroup(zeusSubGroupId, patroniGroup, zeusSubGroupItem);
 
+        //new BetterBonemealListener(demeterSubGroup, SlimefunItems.betterBonemealIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.betterBonemealRecipe, this);
+        //new GrowthPotionListener(demeterSubGroup, SlimefunItems.growthPotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.growthPotionRecipe, this);
         // Items in "Demeter" subgroup
-        betterBonemeal = new BetterBonemealListener(demeterSubGroup, SlimefunItems.betterBonemealIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.betterBonemealRecipe, this);
+        betterBonemeal = SlimefunItems.betterBonemeal(demeterSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         betterBonemeal.register(this);
-        growthPotion = new GrowthPotionListener(demeterSubGroup, SlimefunItems.growthPotionIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.growthPotionRecipe, this);
+        growthPotion = SlimefunItems.growthPotion(demeterSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         growthPotion.register(this);
-        flowerHorseTame = new FlowerHorseTameListener(demeterSubGroup, SlimefunItems.flowerHorseTameIS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItems.flowerHorseTameRecipe, this);
+        flowerHorseTame = SlimefunItems.demeterTame(demeterSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         flowerHorseTame.register(this);
 
         // Items in "Dionysus" subgroup
@@ -185,7 +187,6 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         getCommand("dolphingrace").setExecutor(dolphinGraceListener);
         // Tab completer
         getCommand("tame").setTabCompleter(new TameCommandTabCompleter());
-
 
         // register brewery menu
         new BreweryMenu(this);

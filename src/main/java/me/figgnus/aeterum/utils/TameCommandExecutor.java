@@ -1,5 +1,6 @@
 package me.figgnus.aeterum.utils;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.figgnus.aeterum.Aeterum;
 import me.figgnus.aeterum.gods.demeter.FlowerHorseTameListener;
 import me.figgnus.aeterum.gods.dionysos.DrunkHorseTameListener;
@@ -8,16 +9,23 @@ import me.figgnus.aeterum.gods.hermes.SpeedHorseTameListener;
 import me.figgnus.aeterum.gods.poseidon.SeaHorseTameListener;
 import me.figgnus.aeterum.gods.zeus.PegasusTameListener;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class TameCommandExecutor implements CommandExecutor {
@@ -64,11 +72,26 @@ public class TameCommandExecutor implements CommandExecutor {
             case "zeus":
                 spawnHorse(player, EntityType.HORSE, PegasusTameListener.LEVITATE_KEY, Horse.Color.WHITE);
                 break;
+            case "test":
+                spawnTestPotion(player);
+                break;
             default:
                 player.sendMessage("Unknown horse type: " + action);
                 break;
         }
     }
+
+    private void spawnTestPotion(Player player) {
+        ItemStack item = new ItemStack(Material.POTION);
+        PotionMeta meta = (PotionMeta) item.getItemMeta();
+        meta.setColor(Color.GRAY);
+        meta.setDisplayName("Name");
+        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        item.setItemMeta(meta);
+
+        player.getInventory().addItem(item);
+    }
+
     private void spawnHorse(Player player, EntityType entityType, String metaKey, Horse.Color color) {
         Entity entity = player.getWorld().spawnEntity(player.getLocation(), entityType);
         if (entity instanceof Horse) {
