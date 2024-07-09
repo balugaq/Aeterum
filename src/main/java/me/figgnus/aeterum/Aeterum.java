@@ -6,6 +6,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.figgnus.aeterum.brewery_menu.BreweryMenu;
+import me.figgnus.aeterum.gods.poseidon.BetterTrident;
 import me.figgnus.aeterum.items.item_listener.RandomizerListener;
 import me.figgnus.aeterum.utils.SnowballDemageListener;
 import me.figgnus.aeterum.gods.demeter.BetterBonemealListener;
@@ -68,6 +69,9 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
     private PegasusTameListener pegasusTame;
     private PegasusAbilityListener pegasusAbility;
     private RandomizerListener randomizer;
+
+    // Slimefun Items No Listeners
+    private BetterTrident betterTrident;
 
     @Override
     public void onEnable() {
@@ -142,6 +146,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         // Items in "Poseidon" subgroup
         seaHorseTame = SlimefunItems.poseidonTame(poseidonSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
         seaHorseTame.register(this);
+        betterTrident = SlimefunItems.betterTrident(poseidonSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);
+        betterTrident.register(this);
 
         // Items in "Zeus" subgroup
         breedingItem = SlimefunItems.breedingItem(zeusSubGroup, RecipeType.ENHANCED_CRAFTING_TABLE, this);

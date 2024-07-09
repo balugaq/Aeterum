@@ -38,7 +38,7 @@ public class SeaHorseTameListener extends SlimefunItem implements Listener {
             ItemStack item = player.getInventory().getItemInMainHand();
             if (ItemUtils.isOurCustomItem(item, getItemName())){
                 if (!player.hasPermission("aeterum.poseidon.use")) {
-                    player.sendMessage(ChatColor.RED + "You don't have permission to do this.");
+                    player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít  tento předmět");
                     return;
                 }
                 if (player.getGameMode() == GameMode.SURVIVAL){
@@ -76,7 +76,7 @@ public class SeaHorseTameListener extends SlimefunItem implements Listener {
                 horse.setMaxHealth(health);
                 horse.setHealth(health);
 
-                player.sendMessage("Your horse has transformed!");
+                player.sendMessage("Tvůj kůň se proměnil!");
 
                 // Remove the metadata so it doesn't affect future taming
                 //horse.removeMetadata(METADATA_KEY, plugin);

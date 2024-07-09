@@ -47,7 +47,7 @@ public class ZombieHorseTameListener extends SlimefunItem implements Listener {
             if (item.getItemMeta() == null)return;
             if (ItemUtils.isOurCustomItem(item, getItemName())){
                 if (!player.hasPermission("aeterum.hades.use")) {
-                    player.sendMessage(ChatColor.RED + "You don't have permission to do this.");
+                    player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
                     return;
                 }
                 if (player.getGameMode() == GameMode.SURVIVAL){
@@ -96,7 +96,7 @@ public class ZombieHorseTameListener extends SlimefunItem implements Listener {
                 // Set metadata to indicate the horse has frost walker ability
                 plugin.setEntityMetadata(zombieHorse, LAVA_WALKER, "true");
 
-                player.sendMessage("Your horse has transformed!");
+                player.sendMessage("Tvůj kůň se proměnil!");
             }
         }
     }

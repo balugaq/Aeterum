@@ -36,7 +36,7 @@ public class BetterBonemealListener extends SlimefunItem implements Listener {
         ItemStack item = event.getItem();
         if (ItemUtils.isOurCustomItem(item, getItemName())){
             if (!player.hasPermission("aeterum.demeter.use")){
-                player.sendMessage(ChatColor.RED + "You don't have permission to do this.");
+                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
                 return;
             }
             long currentTime = System.currentTimeMillis();

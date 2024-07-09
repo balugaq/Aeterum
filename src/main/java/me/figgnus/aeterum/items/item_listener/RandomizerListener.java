@@ -41,7 +41,7 @@ public class RandomizerListener extends SlimefunItem implements Listener {
         ItemStack item = player.getInventory().getItemInMainHand();
         if (ItemUtils.isOurCustomItem(item, getItemName())){
             if (!player.hasPermission("trowel.use")){
-                player.sendMessage(ChatColor.RED + "You don't have permission to use this cool item");
+                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
             }
             //Check cooldown
             if (cooldowns.containsKey(playerUuid)) {

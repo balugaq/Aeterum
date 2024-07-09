@@ -30,7 +30,7 @@ public class GrowthPotionListener extends SlimefunItem implements Listener {
         ItemStack consumedItem = event.getItem();
         if (ItemUtils.isOurCustomItem(consumedItem, getItem().getItemMeta().getDisplayName())) {
             if (!player.hasPermission("aeterum.demeter.use")){
-                player.sendMessage(ChatColor.RED + "You don't have permission to do this.");
+                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
                 return;
             }
             if (player.getGameMode() == GameMode.SURVIVAL){

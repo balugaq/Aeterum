@@ -31,7 +31,7 @@ public class SpeedBootsListener extends SlimefunItem implements Listener {
 
         if (ItemUtils.isOurCustomItem(item, getItemName())){
             if (!(player.hasPermission("aeterum.speedboots.use"))){
-                player.sendMessage(ChatColor.RED + "You can't use this item.");
+                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
                 return;
             }
             player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100, 2, false));

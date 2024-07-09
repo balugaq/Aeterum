@@ -28,18 +28,18 @@ public class DolphinGraceListener implements Listener, CommandExecutor {
         }
         Player player = (Player) sender;
         if (!player.hasPermission("aeterum.dolphingrace.toggle")){
-            player.sendMessage(ChatColor.RED + " You don't have permission to toggle Dolphin's Grace.");
+            player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento příkaz");
             return true;
         }
         UUID playerId = player.getUniqueId();
         if (enabledPlayers.contains(playerId)) {
             enabledPlayers.remove(playerId);
-            player.sendMessage(ChatColor.GREEN + "Dolphin's Grace disabled.");
+            player.sendMessage(ChatColor.GREEN + "Dolphin's Grace OFF.");
             getLogger().info("DG disabled for " + player.getUniqueId());
         } else {
             if (!enabledPlayers.contains(playerId)){
                 enabledPlayers.add(playerId);
-                player.sendMessage(ChatColor.GREEN + "Dolphin's Grace enabled.");
+                player.sendMessage(ChatColor.GREEN + "Dolphin's Grace ON.");
                 getLogger().info("DG enabled for " + player.getUniqueId());
             }
         }

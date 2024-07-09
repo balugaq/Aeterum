@@ -40,7 +40,7 @@ public class BreedingItemListener extends SlimefunItem implements Listener {
         UUID playerId = player.getUniqueId();
         if (ItemUtils.isOurCustomItem(itemInHand, getItemName())){
             if (!player.hasPermission("aeterum.breeding.use")){
-                player.sendMessage(ChatColor.RED + "You can't use this item.");
+                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
                 return;
             }
             // Check cooldown

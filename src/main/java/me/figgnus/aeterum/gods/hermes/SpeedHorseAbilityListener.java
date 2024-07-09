@@ -34,7 +34,7 @@ public class SpeedHorseAbilityListener extends SlimefunItem implements Listener 
 
         if (ItemUtils.isOurCustomItem(item, getItemName())){
             if (!player.hasPermission("aeterum.hermes.use")){
-                player.sendMessage(ChatColor.RED + "You don't have permission to do this.");
+                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
                 return;
             }
             Horse horse = (Horse) player.getVehicle();

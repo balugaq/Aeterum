@@ -32,7 +32,7 @@ public class FlyingItemListener extends SlimefunItem implements Listener {
         ItemStack item = event.getItem();
         if (ItemUtils.isOurCustomItem(item, getItemName())){
             if (!(player.hasPermission("aeterum.flyingitem.use"))){
-                player.sendMessage(ChatColor.RED + "You can't use this item.");
+                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
                 return;
             }
             if (event.getAction() == Action.RIGHT_CLICK_AIR){

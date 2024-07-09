@@ -14,6 +14,7 @@ import me.figgnus.aeterum.gods.hermes.FlyingItemListener;
 import me.figgnus.aeterum.gods.hermes.SpeedBootsListener;
 import me.figgnus.aeterum.gods.hermes.SpeedHorseAbilityListener;
 import me.figgnus.aeterum.gods.hermes.SpeedHorseTameListener;
+import me.figgnus.aeterum.gods.poseidon.BetterTrident;
 import me.figgnus.aeterum.gods.poseidon.SeaHorseTameListener;
 import me.figgnus.aeterum.gods.zeus.BreedingItemListener;
 import me.figgnus.aeterum.gods.zeus.PegasusAbilityListener;
@@ -21,8 +22,10 @@ import me.figgnus.aeterum.gods.zeus.PegasusTameListener;
 import me.figgnus.aeterum.items.item_listener.RandomizerListener;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 
 public class SlimefunItems {
@@ -171,6 +174,20 @@ public class SlimefunItems {
                 null, null, null,
         };
         return new RandomizerListener(itemGroup, randomizerIS, recipeType, randomizerRecipe, plugin);
+    }
+    // Better Trident
+    public static BetterTrident betterTrident(ItemGroup itemGroup, RecipeType recipeType, Aeterum plugin) {
+        SlimefunItemStack betterTridentIS = new SlimefunItemStack("BETTER_TRIDENT", Material.TRIDENT, "&aBetter Trident", "", "&7Zbraň hodná krále moří");
+        ItemStack[] betterTridentRecipe = {
+                null, null, null,
+                null, new ItemStack(Material.BONE_BLOCK), null,
+                null, null, null,
+        };
+        ItemMeta meta = betterTridentIS.getItemMeta();
+        meta.addEnchant(Enchantment.RIPTIDE, 5, true);
+        meta.addEnchant(Enchantment.IMPALING, 5, true);
+        betterTridentIS.setItemMeta(meta);
+        return new BetterTrident(itemGroup, betterTridentIS, recipeType, betterTridentRecipe, plugin);
     }
 
 

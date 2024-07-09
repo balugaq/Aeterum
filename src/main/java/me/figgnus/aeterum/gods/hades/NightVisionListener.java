@@ -49,18 +49,18 @@ public class NightVisionListener implements Listener, CommandExecutor {
         }
         Player player = (Player) sender;
         if (!player.hasPermission("aeterum.nightvision.toggle")){
-            player.sendMessage(ChatColor.RED + " You don't have permission to toggle Dolphin's Grace.");
+            player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento příkaz");
             return true;
         }
         UUID playerId = player.getUniqueId();
         if (enabledPlayers.contains(playerId)) {
             enabledPlayers.remove(playerId);
-            player.sendMessage(ChatColor.GREEN + "Nightvision disabled.");
+            player.sendMessage(ChatColor.GREEN + "Nightvision OFF.");
             getLogger().info("NV disabled for " + player.getUniqueId());
         } else {
             if (!enabledPlayers.contains(playerId)){
                 enabledPlayers.add(playerId);
-                player.sendMessage(ChatColor.GREEN + "Nightvision enabled.");
+                player.sendMessage(ChatColor.GREEN + "Nightvision ON.");
                 getLogger().info("NV enabled for " + player.getUniqueId());
             }
         }
