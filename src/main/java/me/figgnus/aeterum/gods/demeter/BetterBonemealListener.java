@@ -54,6 +54,7 @@ public class BetterBonemealListener extends SlimefunItem implements Listener {
                         // Grow cactus or sugar cane
                         above.setType(block.getType());
                         spawnGrowthParticle(above.getLocation().add(0.5, 0.5, 0.5));
+                        playSound(above.getLocation());
                         if (player.getGameMode() == GameMode.SURVIVAL) {
                             event.getItem().setAmount(event.getItem().getAmount() - 1);
                         }
@@ -65,5 +66,8 @@ public class BetterBonemealListener extends SlimefunItem implements Listener {
     }
     private void spawnGrowthParticle(Location location) {
         location.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, location, 30, 0.5, 0.5, 0.5, 0);
+    }
+    private void playSound(Location location){
+        location.getWorld().playSound(location, Sound.BLOCK_COMPOSTER_FILL, 1.0F, 1.0F);
     }
 }
