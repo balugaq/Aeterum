@@ -3,6 +3,7 @@ package me.figgnus.aeterum.gods.dionysos;
 import com.dre.brewery.BPlayer;
 import me.figgnus.aeterum.Aeterum;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
@@ -35,6 +36,10 @@ public class DrunkHorseAbilityListener implements Listener {
                         Horse horse = (Horse) player.getVehicle();
                         String metadataValue = plugin.getEntityMetadata(horse, DrunkHorseTameListener.DRUNK_KEY);
                         if ("true".equals(metadataValue)) {
+                            if (!player.hasPermission("aeterum.dionysus.use")) {
+                                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít schopnost tohoto koně");
+                                return;
+                            }
                             startAuraTask(player, horse);
                         }
                     }

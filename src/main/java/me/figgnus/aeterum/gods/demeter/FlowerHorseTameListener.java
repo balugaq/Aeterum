@@ -40,7 +40,7 @@ public class FlowerHorseTameListener extends SlimefunItem implements Listener {
 
             if (ItemUtils.isOurCustomItem(item, getItemName())){
                 if (!player.hasPermission("aeterum.demeter.use")) {
-                    player.sendMessage(ChatColor.RED + "You don't have permission to do this.");
+                    player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
                     return;
                 }
                 // Consume one item from the stack

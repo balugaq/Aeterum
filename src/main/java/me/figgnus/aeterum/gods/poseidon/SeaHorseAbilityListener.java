@@ -1,6 +1,7 @@
 package me.figgnus.aeterum.gods.poseidon;
 
 import me.figgnus.aeterum.Aeterum;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -44,6 +45,10 @@ public class SeaHorseAbilityListener implements Listener {
 
                     // Check if the block under the horse is water
                     if (blockUnder.getType() == Material.WATER) {
+                        if (!player.hasPermission("aeterum.poseidon.use")) {
+                            player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít schopnost tohoto koně");
+                            return;
+                        }
                         // Convert water to ice
                         blockUnder.setType(Material.FROSTED_ICE);
 

@@ -186,6 +186,8 @@ public class SlimefunItems {
         ItemMeta meta = betterTridentIS.getItemMeta();
         meta.addEnchant(Enchantment.RIPTIDE, 5, true);
         meta.addEnchant(Enchantment.IMPALING, 5, true);
+        meta.addEnchant(Enchantment.MENDING, 1, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
         betterTridentIS.setItemMeta(meta);
         return new BetterTrident(itemGroup, betterTridentIS, recipeType, betterTridentRecipe, plugin);
     }
