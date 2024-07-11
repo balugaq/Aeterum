@@ -1,11 +1,13 @@
 package me.figgnus.aeterum.items;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import me.figgnus.aeterum.items.utils.ItemUtils;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionType;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -31,6 +33,9 @@ public class SlimefunCustomItems {
     public static SlimefunItemStack RANDOMIZER = new SlimefunItemStack("RANDOMIZER", Material.IRON_SHOVEL, "&aRandomizer", "", "&7Položí náhodný block s hotbaru");
     public static SlimefunItemStack BETTER_TRIDENT = new SlimefunItemStack("BETTER_TRIDENT", Material.TRIDENT, "&aBetter Trident", "", "&7Zbraň hodná krále moří");
 
+    // Helper Items
+    static SlimefunItem YEAST =  SlimefunItem.getById("YEAST");
+
     // Recipes
     public static final ItemStack[] betterBonemealRecipe = {
             null, null, null,
@@ -48,53 +53,53 @@ public class SlimefunCustomItems {
             null,new ItemStack(Material.MOSS_BLOCK),null
     };
     public static final ItemStack[] DRUNK_HORSE_TAME_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
+            null, YEAST.getItem(), null,
+            YEAST.getItem(), new ItemStack(Material.GLASS_BOTTLE), YEAST.getItem(),
+            null, YEAST.getItem(), null,
     };
     public static final ItemStack[] ZOMBIE_HORSE_TAME_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
+            null, new ItemStack(Material.WITHER_ROSE), null,
+            new ItemStack(Material.WITHER_ROSE), new ItemStack(Material.GLASS_BOTTLE), new ItemStack(Material.WITHER_ROSE),
+            null, new ItemStack(Material.WITHER_ROSE), null,
     };
     public static final ItemStack[] FLYING_ITEM_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
+            null, new ItemStack(Material.FIREWORK_ROCKET), null,
+            new ItemStack(Material.FIREWORK_ROCKET), new ItemStack(Material.ELYTRA), new ItemStack(Material.FIREWORK_ROCKET),
+            null, new ItemStack(Material.FIREWORK_ROCKET), null,
     };
     public static final ItemStack[] SPEED_BOOTS_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
+            null, ItemUtils.createPotion(PotionType.SPEED), null,
+            ItemUtils.createPotion(PotionType.SPEED), new ItemStack(Material.IRON_BOOTS), ItemUtils.createPotion(PotionType.SPEED),
             null, null, null,
     };
     public static final ItemStack[] SPEED_HORSE_TAME_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
+            null, ItemUtils.createPotion(PotionType.SPEED), null,
+            ItemUtils.createPotion(PotionType.SPEED), new ItemStack(Material.GLASS_BOTTLE), ItemUtils.createPotion(PotionType.SPEED),
+            null, ItemUtils.createPotion(PotionType.SPEED), null,
     };
     public static final ItemStack[] HORSE_SPEED_POTION_RECIPE = {
+            ItemUtils.createPotion(PotionType.SPEED), new ItemStack(Material.APPLE), null,
             null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
             null, null, null,
     };
     public static final ItemStack[] SEA_HORSE_TAME_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
+            null, ItemUtils.createPotion(PotionType.WATER_BREATHING), null,
+            ItemUtils.createPotion(PotionType.WATER_BREATHING), new ItemStack(Material.GLASS_BOTTLE), ItemUtils.createPotion(PotionType.WATER_BREATHING),
+            null, ItemUtils.createPotion(PotionType.WATER_BREATHING), null,
     };
     public static final ItemStack[] PEGASUS_TAME_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
+            null, ItemUtils.createPotion(PotionType.SLOW_FALLING), null,
+            ItemUtils.createPotion(PotionType.SLOW_FALLING), new ItemStack(Material.GLASS_BOTTLE), ItemUtils.createPotion(PotionType.SLOW_FALLING),
+            null, ItemUtils.createPotion(PotionType.SLOW_FALLING), null,
     };
     public static final ItemStack[] BREEDING_ITEM_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
+            null, new ItemStack(Material.CARROT), null,
+            new ItemStack(Material.BEETROOT), new ItemStack(Material.SLIME_BALL), new ItemStack(Material.WHEAT),
+            null, new ItemStack(Material.POTATO), null,
     };
     public static final ItemStack[] HORSE_LEVITATE_POTION_RECIPE = {
+            ItemUtils.createPotion(PotionType.SLOW_FALLING), new ItemStack(Material.APPLE), null,
             null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
             null, null, null,
     };
     public static final ItemStack[] RANDOMIZER_RECIPE = {
@@ -103,9 +108,9 @@ public class SlimefunCustomItems {
             null, null, null,
     };
     public static final ItemStack[] BETTER_TRIDENT_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
+            null, new ItemStack(Material.BOOK), null,
+            new ItemStack(Material.BOOK), new ItemStack(Material.TRIDENT), new ItemStack(Material.BOOK),
+            null, new ItemStack(Material.BOOK), null,
     };
 
     List<Map.Entry<Enchantment, Integer>> betterTridentEnchantments = new ArrayList<>();

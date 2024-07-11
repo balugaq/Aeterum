@@ -33,7 +33,6 @@ import me.figgnus.aeterum.gods.zeus.PegasusTameListener;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
@@ -43,7 +42,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 
-public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
+public class Aeterum extends JavaPlugin implements SlimefunAddon {
     private SubItemGroup demeterSubGroup;
     private SubItemGroup dionysusSubGroup;
     private SubItemGroup hadesSubGroup;
@@ -161,9 +160,6 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
 
 
         // Event Listeners
-        // Group Permission
-        getServer().getPluginManager().registerEvents(this, this);
-
         // Ability Listeners
         FlowerHorseAbilityListener flowerHorseAbilityListener = new FlowerHorseAbilityListener(this);
         DrunkHorseAbilityListener drunkHorseAbilityListener = new DrunkHorseAbilityListener(this);
@@ -195,78 +191,6 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon, Listener {
         // register brewery menu
         new BreweryMenu(this);
     }
-    // Permission check Event Handlers
-//    @EventHandler
-//    public void checkDemeterPermission(PlayerRightClickEvent event) {
-//        Player player = event.getPlayer();
-//        if (!player.hasPermission("aeterum.demeter")) {
-//            // Hide the category
-//            demeterSubGroup.remove(betterBonemeal);
-//            demeterSubGroup.remove(growthPotion);
-//            demeterSubGroup.remove(flowerHorseTame);
-//        }else {
-//            demeterSubGroup.add(betterBonemeal);
-//            demeterSubGroup.add(growthPotion);
-//            demeterSubGroup.add(flowerHorseTame);
-//        }
-//    }
-//    @EventHandler
-//    public void checkDionysusPermission(PlayerRightClickEvent event){
-//        Player player = event.getPlayer();
-//        if (!player.hasPermission("aeterum.dionysus")){
-//            dionysusSubGroup.remove(drunkHorseTame);
-//        }else {
-//            dionysusSubGroup.add(drunkHorseTame);
-//        }
-//    }
-//    @EventHandler
-//    public void checkHadesPermission(PlayerRightClickEvent event){
-//        Player player = event.getPlayer();
-//        if (!player.hasPermission("aeterum.hades")){
-//            hadesSubGroup.remove(zombiHorseTame);
-//        }else {
-//            hadesSubGroup.add(zombiHorseTame);
-//        }
-//    }
-//    @EventHandler
-//    public void checkHermesPermission(PlayerRightClickEvent event){
-//        Player player = event.getPlayer();
-//        if (!player.hasPermission("aeterum.hermes")){
-//            hermesSubGroup.remove(flyingItem);
-//            hermesSubGroup.remove(speedBoots);
-//            hermesSubGroup.remove(speedHorseTame);
-//            hermesSubGroup.remove(speedHorseAbility);
-//        }else {
-//            hermesSubGroup.add(flyingItem);
-//            hermesSubGroup.add(speedBoots);
-//            hermesSubGroup.add(speedHorseTame);
-//            hermesSubGroup.add(speedHorseAbility);
-//        }
-//    }
-//    @EventHandler
-//    public void checkPoseidonPermission(PlayerRightClickEvent event){
-//        Player player = event.getPlayer();
-//        if (!player.hasPermission("aeterum.poseidon")){
-//            poseidonSubGroup.remove(seaHorseTame);
-//            poseidonSubGroup.remove(betterTrident);
-//        }else {
-//            poseidonSubGroup.add(seaHorseTame);
-//            poseidonSubGroup.add(betterTrident);
-//        }
-//    }
-//    @EventHandler
-//    public void checkZeusPermission(PlayerRightClickEvent event){
-//        Player player = event.getPlayer();
-//        if (!player.hasPermission("aeterum.zeus")){
-//            zeusSubGroup.remove(breedingItem);
-//            zeusSubGroup.remove(pegasusTame);
-//            zeusSubGroup.remove(pegasusAbility);
-//        }else {
-//            zeusSubGroup.add(breedingItem);
-//            zeusSubGroup.add(pegasusTame);
-//            zeusSubGroup.add(pegasusAbility);
-//        }
-//    }
     //methods for making metadata of entities persistent
     public void setEntityMetadata(Entity entity, String key, String value){
         NamespacedKey namespacedKey = new NamespacedKey(this, key);
