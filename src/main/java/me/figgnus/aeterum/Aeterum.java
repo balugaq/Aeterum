@@ -149,7 +149,7 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         // Items in "Zeus" subgroup
         breedingItem = new BreedingItemListener(zeusSubGroup, SlimefunCustomItems.BREEDING_ITEM, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.BREEDING_ITEM_RECIPE, this);
         breedingItem.register(this);
-        pegasusTame = new PegasusTameListener(zeusSubGroup, SlimefunCustomItems.PEGASUS_TAME_TAME, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.PEGASUS_TAME_RECIPE, this);
+        pegasusTame = new PegasusTameListener(zeusSubGroup, SlimefunCustomItems.PEGASUS_TAME, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.PEGASUS_TAME_RECIPE, this);
         pegasusTame.register(this);
         pegasusAbility = new PegasusAbilityListener(zeusSubGroup, SlimefunCustomItems.HORSE_LEVITATE_POTION, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.HORSE_LEVITATE_POTION_RECIPE, this);
         pegasusAbility.register(this);
