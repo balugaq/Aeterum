@@ -3,10 +3,12 @@ package me.figgnus.aeterum;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.figgnus.aeterum.brewery_menu.BreweryMenu;
-import me.figgnus.aeterum.gods.poseidon.BetterTrident;
+import me.figgnus.aeterum.gods.poseidon.*;
+import me.figgnus.aeterum.gods.zeus.*;
 import me.figgnus.aeterum.items.groups.CustomItemGroup;
 import me.figgnus.aeterum.items.item_listener.RandomizerListener;
 import me.figgnus.aeterum.items.utils.ItemUtils;
+import me.figgnus.aeterum.utils.DevUtils;
 import me.figgnus.aeterum.utils.SnowballDemageListener;
 import me.figgnus.aeterum.gods.demeter.BetterBonemealListener;
 import me.figgnus.aeterum.gods.demeter.FlowerHorseAbilityListener;
@@ -22,14 +24,8 @@ import me.figgnus.aeterum.gods.hermes.SpeedBootsListener;
 import me.figgnus.aeterum.gods.hermes.SpeedHorseAbilityListener;
 import me.figgnus.aeterum.gods.hermes.SpeedHorseTameListener;
 import me.figgnus.aeterum.items.SlimefunCustomItems;
-import me.figgnus.aeterum.gods.poseidon.DolphinGraceListener;
-import me.figgnus.aeterum.gods.poseidon.SeaHorseAbilityListener;
-import me.figgnus.aeterum.gods.poseidon.SeaHorseTameListener;
 import me.figgnus.aeterum.utils.TameCommandExecutor;
 import me.figgnus.aeterum.utils.TameCommandTabCompleter;
-import me.figgnus.aeterum.gods.zeus.BreedingItemListener;
-import me.figgnus.aeterum.gods.zeus.PegasusAbilityListener;
-import me.figgnus.aeterum.gods.zeus.PegasusTameListener;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
@@ -59,9 +55,12 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
     private PegasusTameListener pegasusTame;
     private PegasusAbilityListener pegasusAbility;
     private RandomizerListener randomizer;
+    private WeatherChangerListener weatherChanger;
+    private LightningSpearListener lightningSpear;
 
     // Slimefun Items No Listeners
     private BetterTrident betterTrident;
+    private WaterBreathingCrown waterBreathingCrown;
 
     @Override
     public void onEnable() {
@@ -71,6 +70,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         if (cfg.getBoolean("options.auto-update")) {
             // You could start an Auto-Updater for example
         }
+        // Dev info to be deleted
+        getServer().getPluginManager().registerEvents(new DevUtils(this), this);
         // Register groups
         ItemStack toolsGroupItem = new CustomItemStack(Material.NETHERITE_PICKAXE, "&eNástroje +", "", "&a> Click to open");
         NamespacedKey toolsGroupId = new NamespacedKey(this, "tools_plus");
@@ -142,6 +143,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         seaHorseTame.register(this);
         betterTrident = new BetterTrident(poseidonGroup, SlimefunCustomItems.BETTER_TRIDENT, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.BETTER_TRIDENT_RECIPE, this);
         betterTrident.register(this);
+        waterBreathingCrown = new WaterBreathingCrown(poseidonGroup, SlimefunCustomItems.WATTER_BREATHING_CROWN, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.WATER_BREATHING_CROWN_RECIPE, this);
+        waterBreathingCrown.register(this);
 
         // Items in "Zeus" subgroup
         breedingItem = new BreedingItemListener(zeusGroup, SlimefunCustomItems.BREEDING_ITEM, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.BREEDING_ITEM_RECIPE, this);
@@ -150,6 +153,10 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         pegasusTame.register(this);
         pegasusAbility = new PegasusAbilityListener(zeusGroup, SlimefunCustomItems.HORSE_LEVITATE_POTION, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.HORSE_LEVITATE_POTION_RECIPE, this);
         pegasusAbility.register(this);
+        weatherChanger = new WeatherChangerListener(zeusGroup, SlimefunCustomItems.WEATHER_CHANGER, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.WEATHER_CHANGER_RECIPE, this);
+        weatherChanger.register(this);
+        lightningSpear = new LightningSpearListener(zeusGroup, SlimefunCustomItems.LIGHTNING_SPEAR, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.LIGHTNING_SPEAR_RECIPE, this);
+        lightningSpear.register(this);
 
         // Items in "Tools +" subgroup
         randomizer = new RandomizerListener(toolsGroup, SlimefunCustomItems.RANDOMIZER, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.RANDOMIZER_RECIPE, this);

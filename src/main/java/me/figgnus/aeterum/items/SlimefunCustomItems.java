@@ -33,6 +33,9 @@ public class SlimefunCustomItems {
     public static SlimefunItemStack HORSE_LEVITATE_POTION = new SlimefunItemStack("HORSE_LEVITATE_POTION", Material.POTION, "&aHorse Levitate Potion", "", "&7Napij se když si na svém koni");
     public static SlimefunItemStack RANDOMIZER = new SlimefunItemStack("RANDOMIZER", Material.IRON_SHOVEL, "&aRandomizer", "", "&7Položí náhodný block s hotbaru");
     public static SlimefunItemStack BETTER_TRIDENT = new SlimefunItemStack("BETTER_TRIDENT", Material.TRIDENT, "&aBetter Trident", "", "&7Zbraň hodná krále moří");
+    public static SlimefunItemStack WATTER_BREATHING_CROWN = new SlimefunItemStack("WATER_BREATHING_CROWN", Material.GOLDEN_HELMET, "&aCrown of the Seas", "", "&7Pomáhá dýchat pod vodou.");
+    public static SlimefunItemStack WEATHER_CHANGER = new SlimefunItemStack("WEATHER_CHANGER", Material.POTION, "&aPotion of Storm", "", "&7Moc slunečno? Tohle by mohlo být řešení");
+    public static SlimefunItemStack LIGHTNING_SPEAR = new SlimefunItemStack("LIGHTNING_SPEAR", Material.TRIDENT, "&aLightning Spear", "", "&7Zbraň hodná vládce Olympu");
 
     // Helper Items
     static SlimefunItem YEAST =  SlimefunItem.getById("YEAST");
@@ -113,8 +116,25 @@ public class SlimefunCustomItems {
             new ItemStack(Material.BOOK), new ItemStack(Material.TRIDENT), new ItemStack(Material.BOOK),
             null, new ItemStack(Material.BOOK), null,
     };
+    public static final ItemStack[] WATER_BREATHING_CROWN_RECIPE = {
+            new ItemStack(Material.TURTLE_HELMET), new ItemStack(Material.GOLDEN_HELMET), null,
+            null, null, null,
+            null, null, null,
+    };
+    public static final ItemStack[] WEATHER_CHANGER_RECIPE = {
+            new ItemStack(Material.TURTLE_EGG), null, null,
+            null, null, null,
+            null, null, null,
+    };
+    public static final ItemStack[] LIGHTNING_SPEAR_RECIPE = {
+            null, null, null,
+            null, new ItemStack(Material.TRIDENT), null,
+            null, null, null,
+    };
 
+    // Lists of enchantments for items
     List<Map.Entry<Enchantment, Integer>> betterTridentEnchantments = new ArrayList<>();
+    List<Map.Entry<Enchantment, Integer>> waterBreathingCrownEnchantments = new ArrayList<>();
 
     public SlimefunCustomItems() {
         betterTridentEnchantments.add(new AbstractMap.SimpleEntry<>(Enchantment.RIPTIDE, 5));
@@ -122,10 +142,14 @@ public class SlimefunCustomItems {
         betterTridentEnchantments.add(new AbstractMap.SimpleEntry<>(Enchantment.DURABILITY, 3));
         betterTridentEnchantments.add(new AbstractMap.SimpleEntry<>(Enchantment.MENDING, 1));
 
+        waterBreathingCrownEnchantments.add(new AbstractMap.SimpleEntry<>(Enchantment.WATER_WORKER, 1));
+        waterBreathingCrownEnchantments.add(new AbstractMap.SimpleEntry<>(Enchantment.OXYGEN, 5));
 
         ItemUtils.configureMeta(GROWTH_POTION, Color.fromRGB(63,206,130), null);
         ItemUtils.configureMeta(HORSE_SPEED_POTION, Color.fromRGB(193,193,193), null);
         ItemUtils.configureMeta(HORSE_LEVITATE_POTION, Color.fromRGB(204,205,208), null);
+        ItemUtils.configureMeta(WEATHER_CHANGER, Color.fromRGB(165, 161, 215), null);
         ItemUtils.configureMeta(BETTER_TRIDENT, null, betterTridentEnchantments);
+        ItemUtils.configureMeta(WATTER_BREATHING_CROWN, null, waterBreathingCrownEnchantments);
     }
 }
