@@ -55,7 +55,7 @@ public class ZombieHorseTameListener extends SlimefunItem implements Listener {
                 }
                 plugin.setEntityMetadata(horse, METADATA_KEY, "true");
 
-                player.sendMessage("Nakrmil/a jsi koně lektvarem. Niní můžeš koně ochočit.");
+                player.sendMessage("Nakrmil/a jsi koně. Niní můžeš koně ochočit.");
             }
         }
     }

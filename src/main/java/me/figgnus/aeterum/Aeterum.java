@@ -1,12 +1,14 @@
 package me.figgnus.aeterum;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.figgnus.aeterum.brewery_menu.BreweryMenu;
 import me.figgnus.aeterum.gods.poseidon.*;
 import me.figgnus.aeterum.gods.zeus.*;
 import me.figgnus.aeterum.items.groups.CustomItemGroup;
 import me.figgnus.aeterum.items.item_listener.RandomizerListener;
+import me.figgnus.aeterum.items.research.ItemResearch;
 import me.figgnus.aeterum.items.utils.ItemUtils;
 import me.figgnus.aeterum.utils.DevUtils;
 import me.figgnus.aeterum.utils.SnowballDemageListener;
@@ -161,6 +163,35 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         // Items in "Tools +" subgroup
         randomizer = new RandomizerListener(toolsGroup, SlimefunCustomItems.RANDOMIZER, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.RANDOMIZER_RECIPE, this);
         randomizer.register(this);
+
+        // Research
+        Research demeter_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "demeter_research"), 70001, "Research unlocked!", 1);
+        demeter_research.addItems(betterBonemeal, growthPotion, flowerHorseTame);
+        demeter_research.register();
+
+        Research dionysus_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "dionysus_research"), 70002, "Research unlocked!", 1);
+        dionysus_research.addItems(drunkHorseTame);
+        dionysus_research.register();
+
+        Research hades_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hades_research"), 70003, "Research unlocked!", 1);
+        hades_research.addItems(zombiHorseTame);
+        hades_research.register();
+
+        Research hermes_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hermes_research"), 70004, "Research unlocked!", 1);
+        hermes_research.addItems(flyingItem, speedBoots, speedHorseTame, speedHorseAbility);
+        hermes_research.register();
+
+        Research poseidon_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "poseidon_research"), 70005, "Research unlocked!", 1);
+        poseidon_research.addItems(seaHorseTame, betterTrident, waterBreathingCrown);
+        poseidon_research.register();
+
+        Research zeus_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "zeus_research"), 70006, "Research unlocked!", 1);
+        zeus_research.addItems(breedingItem, pegasusTame, pegasusAbility, weatherChanger, lightningSpear);
+        zeus_research.register();
+
+        Research tools_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "tools_research"), 70007, "Research unlocked!", 10);
+        tools_research.addItems(randomizer);
+        tools_research.register();
 
 
         // Event Listeners

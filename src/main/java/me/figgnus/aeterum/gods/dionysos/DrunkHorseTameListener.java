@@ -50,7 +50,7 @@ public class DrunkHorseTameListener extends SlimefunItem implements Listener {
                 plugin.setEntityMetadata(horse, METADATA_KEY, "true");
                 // Set metadata to indicate the horse has frost walker ability
                 plugin.setEntityMetadata(horse, DRUNK_KEY, "true");
-                player.sendMessage("Nakrmil/a jsi koně lektvarem. Niní můžeš koně ochočit.");
+                player.sendMessage("Nakrmil/a jsi koně. Niní můžeš koně ochočit.");
             }
         }
     }
