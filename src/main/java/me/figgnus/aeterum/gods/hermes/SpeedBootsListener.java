@@ -15,9 +15,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 
 public class SpeedBootsListener extends SlimefunItem implements Listener {
     private final Aeterum plugin;
+    private static final HashMap<UUID, Long> messageCooldowns = new HashMap<>();
+    private static final long COOLDOWN_TIME = 5000;
     public SpeedBootsListener(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, Aeterum plugin) {
         super(itemGroup, item, recipeType, recipe);
         this.plugin = plugin;
@@ -31,7 +36,12 @@ public class SpeedBootsListener extends SlimefunItem implements Listener {
 
         if (ItemUtils.isOurCustomItem(item, getItemName())){
             if (!(player.hasPermission("aeterum.speedboots.use"))){
-                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
+                long currentTime = System.currentTimeMillis();
+                UUID playerUUID = player.getUniqueId();
+                if (!messageCooldowns.containsKey(playerUUID) || (currentTime - messageCooldowns.get(playerUUID) > COOLDOWN_TIME)){
+                    player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
+                    messageCooldowns.put(playerUUID, currentTime);
+                }
                 return;
             }
             player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100, 2, false));
