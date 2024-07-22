@@ -1,5 +1,6 @@
 package me.figgnus.aeterum.gods.hades;
 
+import me.figgnus.aeterum.gods.GodsUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -24,7 +25,7 @@ public class NightVisionListener implements Listener, CommandExecutor {
         Player player = event.getPlayer();
         Block block = player.getLocation().getBlock();
 
-        if (player.hasPermission("aeterum.nightvision.toggle") && enabledPlayers.contains(player.getUniqueId())){
+        if (player.hasPermission(GodsUtils.hadesPermission) && enabledPlayers.contains(player.getUniqueId())){
             if (isUnderground(player) && isLowLightLevel(block)) {
                 player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 400, 1, true, false));
             }else {
@@ -48,8 +49,8 @@ public class NightVisionListener implements Listener, CommandExecutor {
             return true;
         }
         Player player = (Player) sender;
-        if (!player.hasPermission("aeterum.nightvision.toggle")){
-            player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento příkaz");
+        if (!player.hasPermission(GodsUtils.hadesPermission)){
+            player.sendMessage(GodsUtils.permissionCommandMessage);
             return true;
         }
         UUID playerId = player.getUniqueId();

@@ -5,6 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.figgnus.aeterum.Aeterum;
+import me.figgnus.aeterum.gods.GodsUtils;
 import me.figgnus.aeterum.items.utils.ItemUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -38,8 +39,8 @@ public class PegasusTameListener extends SlimefunItem implements Listener {
             Player player = event.getPlayer();
             ItemStack item = player.getInventory().getItemInMainHand();
             if (ItemUtils.isOurCustomItem(item, getItemName())){
-                if (!player.hasPermission("aeterum.zeus.use")) {
-                    player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
+                if (!player.hasPermission(GodsUtils.zeusPermission)) {
+                    player.sendMessage(GodsUtils.permissionItemMessage);
                     return;
                 }
                 if (player.getGameMode() == GameMode.SURVIVAL){
@@ -49,7 +50,7 @@ public class PegasusTameListener extends SlimefunItem implements Listener {
                 plugin.setEntityMetadata(horse, METADATA_KEY, "true");
                 plugin.setEntityMetadata(horse, LEVITATE_KEY, "true");
 
-                player.sendMessage("Nakrmil/a jsi koně. Niní můžeš koně ochočit.");
+                player.sendMessage(GodsUtils.horseTameMessage);
             }
         }
     }
@@ -77,7 +78,7 @@ public class PegasusTameListener extends SlimefunItem implements Listener {
                 horse.setMaxHealth(health);
                 horse.setHealth(health);
 
-                player.sendMessage("Tvůj kůň se proměnil!");
+                player.sendMessage(GodsUtils.horseTransformMessage);
 
                 // Remove the metadata so it doesn't affect future taming
                 horse.removeMetadata(METADATA_KEY, plugin);

@@ -5,6 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.figgnus.aeterum.Aeterum;
+import me.figgnus.aeterum.gods.GodsUtils;
 import me.figgnus.aeterum.items.utils.ItemUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -33,8 +34,8 @@ public class SpeedHorseAbilityListener extends SlimefunItem implements Listener 
         ItemStack item = event.getItem();
 
         if (ItemUtils.isOurCustomItem(item, getItemName())){
-            if (!player.hasPermission("aeterum.hermes.use")){
-                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
+            if (!player.hasPermission(GodsUtils.hermesPermission)){
+                player.sendMessage(GodsUtils.permissionItemMessage);
                 return;
             }
             Horse horse = (Horse) player.getVehicle();

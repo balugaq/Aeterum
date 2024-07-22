@@ -5,6 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.figgnus.aeterum.Aeterum;
+import me.figgnus.aeterum.gods.GodsUtils;
 import me.figgnus.aeterum.items.utils.ItemUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -35,11 +36,11 @@ public class SpeedBootsListener extends SlimefunItem implements Listener {
         ItemStack item = player.getInventory().getBoots();
 
         if (ItemUtils.isOurCustomItem(item, getItemName())){
-            if (!(player.hasPermission("aeterum.speedboots.use"))){
+            if (!(player.hasPermission(GodsUtils.hermesPermission))){
                 long currentTime = System.currentTimeMillis();
                 UUID playerUUID = player.getUniqueId();
                 if (!messageCooldowns.containsKey(playerUUID) || (currentTime - messageCooldowns.get(playerUUID) > COOLDOWN_TIME)){
-                    player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
+                    player.sendMessage(GodsUtils.permissionItemMessage);
                     messageCooldowns.put(playerUUID, currentTime);
                 }
                 return;

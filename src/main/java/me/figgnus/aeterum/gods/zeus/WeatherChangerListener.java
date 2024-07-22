@@ -5,6 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.figgnus.aeterum.Aeterum;
+import me.figgnus.aeterum.gods.GodsUtils;
 import me.figgnus.aeterum.items.utils.ItemUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -29,8 +30,8 @@ public class WeatherChangerListener extends SlimefunItem implements Listener {
         ItemStack item = event.getItem();
         Player player = event.getPlayer();
         if (ItemUtils.isOurCustomItem(item, getItemName())){
-            if (!player.hasPermission(permission)){
-                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
+            if (!player.hasPermission(GodsUtils.zeusPermission)){
+                player.sendMessage(GodsUtils.permissionItemMessage);
                 return;
             }
             boolean wasStormy = player.getWorld().hasStorm();

@@ -1,8 +1,6 @@
 package me.figgnus.aeterum.items.utils;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import me.figgnus.aeterum.items.SlimefunCustomItems;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;

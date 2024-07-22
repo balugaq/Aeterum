@@ -1,5 +1,6 @@
 package me.figgnus.aeterum.gods.poseidon;
 
+import me.figgnus.aeterum.gods.GodsUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -27,8 +28,8 @@ public class DolphinGraceListener implements Listener, CommandExecutor {
             return true;
         }
         Player player = (Player) sender;
-        if (!player.hasPermission("aeterum.dolphingrace.toggle")){
-            player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento příkaz");
+        if (!player.hasPermission(GodsUtils.poseidonPermission)){
+            player.sendMessage(GodsUtils.permissionCommandMessage);
             return true;
         }
         UUID playerId = player.getUniqueId();
@@ -49,7 +50,7 @@ public class DolphinGraceListener implements Listener, CommandExecutor {
     public void onWaterEnter(PlayerMoveEvent event){
         Player player = event.getPlayer();
         Material blockType = player.getLocation().getBlock().getType();
-        if (player.hasPermission("aeterum.dolphingrace.toggle") && enabledPlayers.contains(player.getUniqueId())){
+        if (player.hasPermission(GodsUtils.poseidonPermission) && enabledPlayers.contains(player.getUniqueId())){
             if (blockType == Material.WATER || blockType == Material.BUBBLE_COLUMN){
                 player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 100, 1, true, true));
             }

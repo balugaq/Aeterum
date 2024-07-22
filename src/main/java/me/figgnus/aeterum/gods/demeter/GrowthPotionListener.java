@@ -5,6 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.figgnus.aeterum.Aeterum;
+import me.figgnus.aeterum.gods.GodsUtils;
 import me.figgnus.aeterum.items.utils.ItemUtils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -28,9 +29,9 @@ public class GrowthPotionListener extends SlimefunItem implements Listener {
     public void onPlayerItemConsume(PlayerItemConsumeEvent event) {
         Player player = event.getPlayer();
         ItemStack consumedItem = event.getItem();
-        if (ItemUtils.isOurCustomItem(consumedItem, getItem().getItemMeta().getDisplayName())) {
-            if (!player.hasPermission("aeterum.demeter.use")){
-                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
+        if (ItemUtils.isOurCustomItem(consumedItem, getItemName())) {
+            if (!player.hasPermission(GodsUtils.demeterPermission)){
+                player.sendMessage(GodsUtils.permissionItemMessage);
                 return;
             }
             if (player.getGameMode() == GameMode.SURVIVAL){

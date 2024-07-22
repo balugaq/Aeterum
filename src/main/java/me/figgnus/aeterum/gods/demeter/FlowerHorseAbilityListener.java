@@ -1,6 +1,7 @@
 package me.figgnus.aeterum.gods.demeter;
 
 import me.figgnus.aeterum.Aeterum;
+import me.figgnus.aeterum.gods.GodsUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -51,8 +52,8 @@ public class FlowerHorseAbilityListener implements Listener {
 
                         // Check if the block below is farmland
                         if (blockBelow.getType() == Material.FARMLAND || blockBelowSave.getType() == Material.FARMLAND) {
-                            if (!player.hasPermission("aeterum.demeter.use")) {
-                                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít schopnost tohoto koně");
+                            if (!player.hasPermission(GodsUtils.demeterPermission)) {
+                                player.sendMessage(GodsUtils.permissionItemMessage);
                                 return;
                             }
                             // Check if the player has seeds in their inventory
