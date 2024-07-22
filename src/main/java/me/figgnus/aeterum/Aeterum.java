@@ -5,6 +5,8 @@ import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.figgnus.aeterum.brewery_menu.BreweryMenu;
 import me.figgnus.aeterum.gods.GodsUtils;
+import me.figgnus.aeterum.gods.dionysos.*;
+import me.figgnus.aeterum.gods.hades.*;
 import me.figgnus.aeterum.gods.poseidon.*;
 import me.figgnus.aeterum.gods.zeus.*;
 import me.figgnus.aeterum.items.groups.CustomItemGroup;
@@ -16,11 +18,6 @@ import me.figgnus.aeterum.gods.demeter.BetterBonemealListener;
 import me.figgnus.aeterum.gods.demeter.FlowerHorseAbilityListener;
 import me.figgnus.aeterum.gods.demeter.FlowerHorseTameListener;
 import me.figgnus.aeterum.gods.demeter.GrowthPotionListener;
-import me.figgnus.aeterum.gods.dionysos.DrunkHorseAbilityListener;
-import me.figgnus.aeterum.gods.dionysos.DrunkHorseTameListener;
-import me.figgnus.aeterum.gods.hades.NightVisionListener;
-import me.figgnus.aeterum.gods.hades.ZombieHorseAbilityListener;
-import me.figgnus.aeterum.gods.hades.ZombieHorseTameListener;
 import me.figgnus.aeterum.gods.hermes.FlyingItemListener;
 import me.figgnus.aeterum.gods.hermes.SpeedBootsListener;
 import me.figgnus.aeterum.gods.hermes.SpeedHorseAbilityListener;
@@ -47,6 +44,7 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
     private GrowthPotionListener growthPotion;
     private FlowerHorseTameListener flowerHorseTame;
     private DrunkHorseTameListener drunkHorseTame;
+    private RandomEffectPotionListener randomEffectPotion;
     private ZombieHorseTameListener zombiHorseTame;
     private FlyingItemListener flyingItem;
     private SpeedBootsListener speedBoots;
@@ -59,6 +57,10 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
     private RandomizerListener randomizer;
     private WeatherChangerListener weatherChanger;
     private LightningSpearListener lightningSpear;
+    private PartyAtmosphereListener partyAtmosphere;
+    private FireworkBallListener fireworkBall;
+    private DarknessPotionListener darknessPotion;
+    private PortalListener portal;
 
     // Slimefun Items No Listeners
     private BetterTrident betterTrident;
@@ -118,10 +120,20 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         // Items in "Dionysus" subgroup
         drunkHorseTame = new DrunkHorseTameListener(dionysusGroup, SlimefunCustomItems.DRUNK_HORSE_TAME, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.DRUNK_HORSE_TAME_RECIPE, this);
         drunkHorseTame.register(this);
+        randomEffectPotion = new RandomEffectPotionListener(dionysusGroup, SlimefunCustomItems.RANDOM_EFFECT_POTION, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.RANDOM_EFFECT_POTION_RECIPE, this);
+        randomEffectPotion.register(this);
+        partyAtmosphere = new PartyAtmosphereListener(dionysusGroup, SlimefunCustomItems.PARTY_ATMOSPHERE, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.PARTY_ATMOSPHERE_RECIPE, this);
+        partyAtmosphere.register(this);
+        fireworkBall = new FireworkBallListener(dionysusGroup, SlimefunCustomItems.PARTY_BALL, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.PARTY_BALL_RECIPE, this);
+        fireworkBall.register(this);
 
         // Items in "Hades" subgroup
         zombiHorseTame = new ZombieHorseTameListener(hadesGroup, SlimefunCustomItems.ZOMBIE_HORSE_TAME, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.ZOMBIE_HORSE_TAME_RECIPE, this);
         zombiHorseTame.register(this);
+        darknessPotion = new DarknessPotionListener(hadesGroup, SlimefunCustomItems.DARKNESS_POTION, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.DARKNESS_POTION_RECIPE, this);
+        darknessPotion.register(this);
+        portal = new PortalListener(hadesGroup, SlimefunCustomItems.PORTAL_CREATOR, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.PORTAL_CREATOR_RECIPE, this);
+        portal.register(this);
 
         // Items in "Hermes" subgroup
         flyingItem = new FlyingItemListener(hermesGroup, SlimefunCustomItems.FLYING_ITEM, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.FLYING_ITEM_RECIPE, this);
@@ -163,11 +175,11 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         demeter_research.register();
 
         Research dionysus_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "dionysus_research"), 70002, "Research unlocked!", 1);
-        dionysus_research.addItems(drunkHorseTame);
+        dionysus_research.addItems(drunkHorseTame, randomEffectPotion, partyAtmosphere, fireworkBall);
         dionysus_research.register();
 
         Research hades_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hades_research"), 70003, "Research unlocked!", 1);
-        hades_research.addItems(zombiHorseTame);
+        hades_research.addItems(zombiHorseTame, darknessPotion, portal);
         hades_research.register();
 
         Research hermes_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hermes_research"), 70004, "Research unlocked!", 1);

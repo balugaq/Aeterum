@@ -7,7 +7,6 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.figgnus.aeterum.Aeterum;
 import me.figgnus.aeterum.gods.GodsUtils;
 import me.figgnus.aeterum.items.utils.ItemUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Particle;
 import org.bukkit.entity.Horse;

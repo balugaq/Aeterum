@@ -36,6 +36,12 @@ public class SlimefunCustomItems {
     public static SlimefunItemStack WATTER_BREATHING_CROWN = new SlimefunItemStack("WATER_BREATHING_CROWN", Material.GOLDEN_HELMET, "&aCrown of the Seas", "", "&7Pomáhá dýchat pod vodou.");
     public static SlimefunItemStack WEATHER_CHANGER = new SlimefunItemStack("WEATHER_CHANGER", Material.POTION, "&aPotion of Storm", "", "&7Moc slunečno? Tohle by mohlo být řešení");
     public static SlimefunItemStack LIGHTNING_SPEAR = new SlimefunItemStack("LIGHTNING_SPEAR", Material.TRIDENT, "&aLightning Spear", "", "&7Zbraň hodná vládce Olympu");
+    public static SlimefunItemStack RANDOM_EFFECT_POTION = new SlimefunItemStack("RANDOM_EFFECT_POTION", Material.POTION, "&aMysterious Brew", "", "&7Kdo vý co se může stát");
+    public static SlimefunItemStack PARTY_ATMOSPHERE = new SlimefunItemStack("PARTY_ATMOSPHERE", Material.POTION, "&aParty Atmosphere", "", "&7Let's Party!!!");
+    public static SlimefunItemStack PARTY_BALL = new SlimefunItemStack("PARTY_BALL", Material.SNOWBALL, "&aParty Ball", "", "&7Pozor na výbuch");
+    public static SlimefunItemStack DARKNESS_POTION = new SlimefunItemStack("DARKNESS_POTION", Material.POTION, "&aDarkness", "", "&7Oslep své nepřátele");
+    public static SlimefunItemStack PORTAL_CREATOR = new SlimefunItemStack("PORTAL_CREATOR", Material.SPLASH_POTION, "&aDark Portal", "", "&7Kde se objevíš?");
+
 
     // Helper Items
     static SlimefunItem YEAST =  SlimefunItem.getById("YEAST");
@@ -131,6 +137,31 @@ public class SlimefunCustomItems {
             null, new ItemStack(Material.TRIDENT), null,
             null, null, null,
     };
+    public static final ItemStack[] RANDOM_EFFECT_POTION_RECIPE = {
+            null, null, null,
+            null, new ItemStack(Material.GLASS_BOTTLE), null,
+            null, null, null,
+    };
+    public static final ItemStack[] PARTY_ATMOSPHERE_RECIPE = {
+            null, null, null,
+            null, new ItemStack(Material.GLASS_BOTTLE), null,
+            null, null, null,
+    };
+    public static final ItemStack[] PARTY_BALL_RECIPE = {
+            null, null, null,
+            null, new ItemStack(Material.SNOWBALL), null,
+            null, null, null,
+    };
+    public static final ItemStack[] DARKNESS_POTION_RECIPE = {
+            null, null, null,
+            null, new ItemStack(Material.GLASS), null,
+            null, null, null,
+    };
+    public static final ItemStack[] PORTAL_CREATOR_RECIPE = {
+            null, null, null,
+            null, new ItemStack(Material.GLASS), null,
+            null, null, null,
+    };
 
     // Lists of enchantments for items
     List<Map.Entry<Enchantment, Integer>> betterTridentEnchantments = new ArrayList<>();
@@ -149,6 +180,9 @@ public class SlimefunCustomItems {
         ItemUtils.configureMeta(HORSE_SPEED_POTION, Color.fromRGB(193,193,193), null);
         ItemUtils.configureMeta(HORSE_LEVITATE_POTION, Color.fromRGB(204,205,208), null);
         ItemUtils.configureMeta(WEATHER_CHANGER, Color.fromRGB(165, 161, 215), null);
+        ItemUtils.configureMeta(RANDOM_EFFECT_POTION, Color.fromRGB(43,158,54), null);
+        ItemUtils.configureMeta(PARTY_ATMOSPHERE, Color.fromRGB(255,158,54), null);
+        ItemUtils.configureMeta(DARKNESS_POTION, Color.fromRGB(255,30,1), null);
         ItemUtils.configureMeta(BETTER_TRIDENT, null, betterTridentEnchantments);
         ItemUtils.configureMeta(WATTER_BREATHING_CROWN, null, waterBreathingCrownEnchantments);
     }

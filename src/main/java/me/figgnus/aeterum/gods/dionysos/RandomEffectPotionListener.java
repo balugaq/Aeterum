@@ -12,9 +12,23 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+import java.util.List;
+import java.util.Random;
 
 public class RandomEffectPotionListener extends SlimefunItem implements Listener {
     private final Aeterum plugin;
+    private final List effects = List.of(PotionEffectType.SPEED,
+            PotionEffectType.JUMP,
+            PotionEffectType.DAMAGE_RESISTANCE,
+            PotionEffectType.INCREASE_DAMAGE,
+            PotionEffectType.POISON,
+            PotionEffectType.NIGHT_VISION,
+            PotionEffectType.BLINDNESS,
+            PotionEffectType.FAST_DIGGING,
+            PotionEffectType.LUCK);
     public RandomEffectPotionListener(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, Aeterum plugin) {
         super(itemGroup, item, recipeType, recipe);
         this.plugin = plugin;
@@ -30,7 +44,15 @@ public class RandomEffectPotionListener extends SlimefunItem implements Listener
                 player.sendMessage(GodsUtils.permissionItemMessage);
                 return;
             }
-
+            applyRandomEffect(player);
         }
+    }
+
+    private void applyRandomEffect(Player player) {
+        Random random = new Random();
+        int index = random.nextInt(0, effects.size());
+        int duration = random.nextInt(20, 600);
+        int amplifier = random.nextInt(1, 3);
+        player.addPotionEffect(new PotionEffect((PotionEffectType) effects.get(index), duration, amplifier, false));
     }
 }
