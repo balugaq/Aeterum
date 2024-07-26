@@ -34,7 +34,7 @@ public class ItemUtils  {
     }
     // Configures metadata of custom Slimefun items
     public static void configureMeta(SlimefunItemStack item, Color color, List<Map.Entry<Enchantment, Integer>> enchantments){
-        if (item.getType() == Material.POTION){
+        if (item.getType() == Material.POTION || item.getType() == Material.SPLASH_POTION){
             PotionMeta meta = (PotionMeta) item.getItemMeta();
             assert meta != null;
             meta.setColor(color);

@@ -7,6 +7,7 @@ import me.figgnus.aeterum.brewery_menu.BreweryMenu;
 import me.figgnus.aeterum.gods.GodsUtils;
 import me.figgnus.aeterum.gods.dionysos.*;
 import me.figgnus.aeterum.gods.hades.*;
+import me.figgnus.aeterum.gods.hermes.*;
 import me.figgnus.aeterum.gods.poseidon.*;
 import me.figgnus.aeterum.gods.zeus.*;
 import me.figgnus.aeterum.items.groups.CustomItemGroup;
@@ -18,10 +19,6 @@ import me.figgnus.aeterum.gods.demeter.BetterBonemealListener;
 import me.figgnus.aeterum.gods.demeter.FlowerHorseAbilityListener;
 import me.figgnus.aeterum.gods.demeter.FlowerHorseTameListener;
 import me.figgnus.aeterum.gods.demeter.GrowthPotionListener;
-import me.figgnus.aeterum.gods.hermes.FlyingItemListener;
-import me.figgnus.aeterum.gods.hermes.SpeedBootsListener;
-import me.figgnus.aeterum.gods.hermes.SpeedHorseAbilityListener;
-import me.figgnus.aeterum.gods.hermes.SpeedHorseTameListener;
 import me.figgnus.aeterum.items.SlimefunCustomItems;
 import me.figgnus.aeterum.utils.TameCommandExecutor;
 import me.figgnus.aeterum.utils.TameCommandTabCompleter;
@@ -61,6 +58,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
     private FireworkBallListener fireworkBall;
     private DarknessPotionListener darknessPotion;
     private PortalListener portal;
+    private DarkPearlListener darkPearl;
+    private MessengerPackListener messengerPack;
 
     // Slimefun Items No Listeners
     private BetterTrident betterTrident;
@@ -134,6 +133,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         darknessPotion.register(this);
         portal = new PortalListener(hadesGroup, SlimefunCustomItems.PORTAL_CREATOR, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.PORTAL_CREATOR_RECIPE, this);
         portal.register(this);
+        darkPearl = new DarkPearlListener(hadesGroup, SlimefunCustomItems.DARK_PEARL, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.DARK_PEARL_RECIPE, this);
+        darkPearl.register(this);
 
         // Items in "Hermes" subgroup
         flyingItem = new FlyingItemListener(hermesGroup, SlimefunCustomItems.FLYING_ITEM, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.FLYING_ITEM_RECIPE, this);
@@ -144,6 +145,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         speedHorseTame.register(this);
         speedHorseAbility = new SpeedHorseAbilityListener(hermesGroup, SlimefunCustomItems.HORSE_SPEED_POTION, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.HORSE_SPEED_POTION_RECIPE, this);
         speedHorseAbility.register(this);
+        messengerPack = new MessengerPackListener(hermesGroup, SlimefunCustomItems.MESSENGER_BAG, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.MESSENGER_BAG_RECIPE, this);
+        messengerPack.register(this);
 
         // Items in "Poseidon" subgroup
         seaHorseTame = new SeaHorseTameListener(poseidonGroup, SlimefunCustomItems.SEA_HORSE_TAME, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.SEA_HORSE_TAME_RECIPE, this);
@@ -179,11 +182,11 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         dionysus_research.register();
 
         Research hades_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hades_research"), 70003, "Research unlocked!", 1);
-        hades_research.addItems(zombiHorseTame, darknessPotion, portal);
+        hades_research.addItems(zombiHorseTame, darknessPotion, portal, darkPearl);
         hades_research.register();
 
         Research hermes_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hermes_research"), 70004, "Research unlocked!", 1);
-        hermes_research.addItems(flyingItem, speedBoots, speedHorseTame, speedHorseAbility);
+        hermes_research.addItems(flyingItem, speedBoots, speedHorseTame, speedHorseAbility, messengerPack);
         hermes_research.register();
 
         Research poseidon_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "poseidon_research"), 70005, "Research unlocked!", 1);
@@ -249,6 +252,10 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onDisable() {
         // Logic for disabling the plugin...
+        // Save the inventory when the server shuts down
+        if (messengerPack != null) {
+            messengerPack.saveAllInventories();
+        }
     }
 
     @Override

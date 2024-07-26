@@ -41,6 +41,8 @@ public class SlimefunCustomItems {
     public static SlimefunItemStack PARTY_BALL = new SlimefunItemStack("PARTY_BALL", Material.SNOWBALL, "&aParty Ball", "", "&7Pozor na výbuch");
     public static SlimefunItemStack DARKNESS_POTION = new SlimefunItemStack("DARKNESS_POTION", Material.POTION, "&aDarkness", "", "&7Oslep své nepřátele");
     public static SlimefunItemStack PORTAL_CREATOR = new SlimefunItemStack("PORTAL_CREATOR", Material.SPLASH_POTION, "&aDark Portal", "", "&7Kde se objevíš?");
+    public static SlimefunItemStack DARK_PEARL = new SlimefunItemStack("DARK_PEARL", Material.ENDER_PEARL, "&aDark Pearl", "", "&7Prostě Ender Pearl. Možná trochu lepší.");
+    public static SlimefunItemStack MESSENGER_BAG = new SlimefunItemStack("MESSENGER_BAG", ItemUtils.createHead("a014f8712f558d20c1477610d82ec32673124647eb1076437dd2cdd2a8637e4a"), "&aMerchant's Satchel", "", "&7Bůh obchodníků potřebuje pořádnou brašnu.");
 
 
     // Helper Items
@@ -162,6 +164,16 @@ public class SlimefunCustomItems {
             null, new ItemStack(Material.GLASS), null,
             null, null, null,
     };
+    public static final ItemStack[] DARK_PEARL_RECIPE = {
+            null, null, null,
+            null, new ItemStack(Material.ENDER_PEARL), null,
+            null, null, null,
+    };
+    public static final ItemStack[] MESSENGER_BAG_RECIPE = {
+            null, null, null,
+            null, new ItemStack(Material.LEATHER), null,
+            null, null, null,
+    };
 
     // Lists of enchantments for items
     List<Map.Entry<Enchantment, Integer>> betterTridentEnchantments = new ArrayList<>();
@@ -183,6 +195,7 @@ public class SlimefunCustomItems {
         ItemUtils.configureMeta(RANDOM_EFFECT_POTION, Color.fromRGB(43,158,54), null);
         ItemUtils.configureMeta(PARTY_ATMOSPHERE, Color.fromRGB(255,158,54), null);
         ItemUtils.configureMeta(DARKNESS_POTION, Color.fromRGB(255,30,1), null);
+        ItemUtils.configureMeta(PORTAL_CREATOR, Color.fromRGB(255,30,50), null);
         ItemUtils.configureMeta(BETTER_TRIDENT, null, betterTridentEnchantments);
         ItemUtils.configureMeta(WATTER_BREATHING_CROWN, null, waterBreathingCrownEnchantments);
     }
