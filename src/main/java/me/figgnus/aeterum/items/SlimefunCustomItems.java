@@ -31,7 +31,7 @@ public class SlimefunCustomItems {
     public static SlimefunItemStack PEGASUS_TAME = new SlimefunItemStack("PEGASUS_TAME", Material.APPLE, "&aLevity Apple", "", "&7Jablko kterým Zeus může ochočit svého koňe");
     public static SlimefunItemStack BREEDING_ITEM = new SlimefunItemStack("BREEDING_ITEM", Material.SLIME_BALL, "&aAnimal Feed", "", "&7Nakrm zvíře");
     public static SlimefunItemStack HORSE_LEVITATE_POTION = new SlimefunItemStack("HORSE_LEVITATE_POTION", Material.POTION, "&aHorse Levitate Potion", "", "&7Napij se když si na svém koni");
-    public static SlimefunItemStack RANDOMIZER = new SlimefunItemStack("RANDOMIZER", Material.IRON_SHOVEL, "&aRandomizer", "", "&7Položí náhodný block s hotbaru");
+    public static SlimefunItemStack RANDOMIZER = new SlimefunItemStack("RANDOMIZER", Material.STICK, "&aRandomizer", "", "&7Položí náhodný block s hotbaru");
     public static SlimefunItemStack BETTER_TRIDENT = new SlimefunItemStack("BETTER_TRIDENT", Material.TRIDENT, "&aBetter Trident", "", "&7Zbraň hodná krále moří");
     public static SlimefunItemStack WATTER_BREATHING_CROWN = new SlimefunItemStack("WATER_BREATHING_CROWN", Material.GOLDEN_HELMET, "&aCrown of the Seas", "", "&7Pomáhá dýchat pod vodou.");
     public static SlimefunItemStack WEATHER_CHANGER = new SlimefunItemStack("WEATHER_CHANGER", Material.POTION, "&aPotion of Storm", "", "&7Moc slunečno? Tohle by mohlo být řešení");
@@ -43,6 +43,7 @@ public class SlimefunCustomItems {
     public static SlimefunItemStack PORTAL_CREATOR = new SlimefunItemStack("PORTAL_CREATOR", Material.SPLASH_POTION, "&aDark Portal", "", "&7Kde se objevíš?");
     public static SlimefunItemStack DARK_PEARL = new SlimefunItemStack("DARK_PEARL", Material.ENDER_PEARL, "&aDark Pearl", "", "&7Prostě Ender Pearl. Možná trochu lepší.");
     public static SlimefunItemStack MESSENGER_BAG = new SlimefunItemStack("MESSENGER_BAG", ItemUtils.createHead("a014f8712f558d20c1477610d82ec32673124647eb1076437dd2cdd2a8637e4a"), "&aMerchant's Satchel", "", "&7Bůh obchodníků potřebuje pořádnou brašnu.");
+    public static SlimefunItemStack HOE_OF_HARVEST = new SlimefunItemStack("HOE_OF_HARVEST", Material.STICK, "&aSythe of the Harvest", "", "&7Jestli-že někdo vý jak farmařit tak jsi to ty.");
 
 
     // Helper Items
@@ -174,6 +175,12 @@ public class SlimefunCustomItems {
             null, new ItemStack(Material.LEATHER), null,
             null, null, null,
     };
+    public static final ItemStack[] HOE_OF_HARVEST_RECIPE = {
+            null, null, null,
+            null, new ItemStack(Material.IRON_HOE), null,
+            null, null, null,
+    };
+
 
     // Lists of enchantments for items
     List<Map.Entry<Enchantment, Integer>> betterTridentEnchantments = new ArrayList<>();

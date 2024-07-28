@@ -5,6 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.figgnus.aeterum.brewery_menu.BreweryMenu;
 import me.figgnus.aeterum.gods.GodsUtils;
+import me.figgnus.aeterum.gods.demeter.*;
 import me.figgnus.aeterum.gods.dionysos.*;
 import me.figgnus.aeterum.gods.hades.*;
 import me.figgnus.aeterum.gods.hermes.*;
@@ -15,10 +16,6 @@ import me.figgnus.aeterum.items.item_listener.RandomizerListener;
 import me.figgnus.aeterum.items.research.ItemResearch;
 import me.figgnus.aeterum.items.utils.ItemUtils;
 import me.figgnus.aeterum.utils.SnowballDemageListener;
-import me.figgnus.aeterum.gods.demeter.BetterBonemealListener;
-import me.figgnus.aeterum.gods.demeter.FlowerHorseAbilityListener;
-import me.figgnus.aeterum.gods.demeter.FlowerHorseTameListener;
-import me.figgnus.aeterum.gods.demeter.GrowthPotionListener;
 import me.figgnus.aeterum.items.SlimefunCustomItems;
 import me.figgnus.aeterum.utils.TameCommandExecutor;
 import me.figgnus.aeterum.utils.TameCommandTabCompleter;
@@ -60,6 +57,7 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
     private PortalListener portal;
     private DarkPearlListener darkPearl;
     private MessengerPackListener messengerPack;
+    private HoeOfHarvestListener hoeOfHarvest;
 
     // Slimefun Items No Listeners
     private BetterTrident betterTrident;
@@ -115,6 +113,8 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         growthPotion.register(this);
         flowerHorseTame = new FlowerHorseTameListener(demeterGroup , SlimefunCustomItems.FL0WER_HORSE_TAME, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.FLOWER_HORSE_TAME_RECIPE, this);
         flowerHorseTame.register(this);
+        hoeOfHarvest = new HoeOfHarvestListener(demeterGroup, SlimefunCustomItems.HOE_OF_HARVEST, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.HOE_OF_HARVEST_RECIPE, this);
+        hoeOfHarvest.register(this);
 
         // Items in "Dionysus" subgroup
         drunkHorseTame = new DrunkHorseTameListener(dionysusGroup, SlimefunCustomItems.DRUNK_HORSE_TAME, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunCustomItems.DRUNK_HORSE_TAME_RECIPE, this);
@@ -174,7 +174,7 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
 
         // Research
         Research demeter_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "demeter_research"), 70001, "Research unlocked!", 1);
-        demeter_research.addItems(betterBonemeal, growthPotion, flowerHorseTame);
+        demeter_research.addItems(betterBonemeal, growthPotion, flowerHorseTame, hoeOfHarvest);
         demeter_research.register();
 
         Research dionysus_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "dionysus_research"), 70002, "Research unlocked!", 1);

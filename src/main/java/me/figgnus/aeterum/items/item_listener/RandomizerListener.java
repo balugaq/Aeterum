@@ -42,6 +42,7 @@ public class RandomizerListener extends SlimefunItem implements Listener {
         if (ItemUtils.isOurCustomItem(item, getItemName())){
             if (!player.hasPermission("trowel.use")){
                 player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
+                return;
             }
             //Check cooldown
             if (cooldowns.containsKey(playerUuid)) {
@@ -63,6 +64,11 @@ public class RandomizerListener extends SlimefunItem implements Listener {
                 Material selectMaterial = selectRandomMaterial(player);
 
                 if (event.getAction() == Action.RIGHT_CLICK_BLOCK){
+                    // Check if player has the block in inventory in survival mode
+                    if (player.getGameMode() == GameMode.SURVIVAL && !hasMaterialInInventory(player, selectMaterial)) {
+                        player.sendMessage(ChatColor.RED + "Nemáš dostatek bloků v inventáři");
+                        return;
+                    }
                     // Place the block if the adjacent block is air
                     if (adjacentBlock.getType() == Material.AIR && !(isLocationOccupied(adjacentBlock.getLocation()))) {
                         adjacentBlock.setType(selectMaterial);
@@ -81,6 +87,16 @@ public class RandomizerListener extends SlimefunItem implements Listener {
             cooldowns.put(playerUuid, System.currentTimeMillis());
         }
     }
+
+    private boolean hasMaterialInInventory(Player player, Material material) {
+        for (ItemStack item : player.getInventory().getContents()) {
+            if (item != null && item.getType() == material) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void setBlockOrientation(Block block, BlockFace face, Material material) {
         BlockData blockData = block.getBlockData();
         if (blockData instanceof Directional) {
