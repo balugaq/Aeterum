@@ -72,7 +72,7 @@ public class BreweryMenu {
         configurePotionMeta(houbova_vodka_stack, createNewColor(255,153,153));
         SlimefunItemStack gin_stack = new SlimefunItemStack("GIN", Material.POTION, "&eGin");
         configurePotionMeta(gin_stack, createNewColor(153,221,255));
-        SlimefunItemStack tequila_stack = new SlimefunItemStack("TEQUILA", Material.POTION, "&eTequila");
+        SlimefunItemStack tequila_stack = new SlimefunItemStack("AETERUM_TEQUILA", Material.POTION, "&eTequila liqueur"); // 龙舌兰利口酒
         configurePotionMeta(tequila_stack, createNewColor(245,240,126));
         SlimefunItemStack absinth_stack = new SlimefunItemStack("ABSINTH", Material.POTION, "&eAbsinth");
         configurePotionMeta(absinth_stack, Color.GREEN);
