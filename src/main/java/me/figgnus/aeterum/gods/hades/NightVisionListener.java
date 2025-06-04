@@ -1,6 +1,9 @@
 package me.figgnus.aeterum.gods.hades;
 
-import me.figgnus.aeterum.gods.GodsUtils;
+import java.util.HashSet;
+import java.util.UUID;
+
+import static org.bukkit.Bukkit.getLogger;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -13,10 +16,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.HashSet;
-import java.util.UUID;
-
-import static org.bukkit.Bukkit.getLogger;
+import me.figgnus.aeterum.gods.GodsUtils;
 
 public class NightVisionListener implements Listener, CommandExecutor {
     public HashSet<UUID> enabledPlayers = new HashSet<>();
@@ -45,7 +45,7 @@ public class NightVisionListener implements Listener, CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!(sender instanceof Player)){
-            sender.sendMessage(ChatColor.RED + "This command can be only used by players");
+            sender.sendMessage(ChatColor.RED + "此指令只能由玩家使用");
             return true;
         }
         Player player = (Player) sender;
@@ -56,13 +56,13 @@ public class NightVisionListener implements Listener, CommandExecutor {
         UUID playerId = player.getUniqueId();
         if (enabledPlayers.contains(playerId)) {
             enabledPlayers.remove(playerId);
-            player.sendMessage(ChatColor.GREEN + "Nightvision OFF.");
-            getLogger().info("NV disabled for " + player.getUniqueId());
+            player.sendMessage(ChatColor.GREEN + "夜视已关闭");
+            getLogger().info("夜视已关闭： " + player.getUniqueId());
         } else {
             if (!enabledPlayers.contains(playerId)){
                 enabledPlayers.add(playerId);
-                player.sendMessage(ChatColor.GREEN + "Nightvision ON.");
-                getLogger().info("NV enabled for " + player.getUniqueId());
+                player.sendMessage(ChatColor.GREEN + "夜视已开启");
+                getLogger().info("夜视已开启： " + player.getUniqueId());
             }
         }
         return true;
