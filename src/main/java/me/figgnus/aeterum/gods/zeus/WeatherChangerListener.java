@@ -36,13 +36,13 @@ public class WeatherChangerListener extends SlimefunItem implements Listener {
             }
             boolean wasStormy = player.getWorld().hasStorm();
             player.getWorld().setStorm(true);
-            player.sendMessage("Zvedá se bouře na dalších " + ticks / 20 + " sekund.");
+            player.sendMessage("暴风雨还有 " + ticks / 20 + " 到来");
             // Schedule a task to revert the weather after 1 minute (1200 ticks)
             new BukkitRunnable() {
                 @Override
                 public void run() {
                     player.getWorld().setStorm(wasStormy);
-                    player.sendMessage("Počasí se vrací do normálu.");
+                    player.sendMessage("天气正在恢复正常.");
                 }
             }.runTaskLater(plugin, ticks);
         }

@@ -24,7 +24,7 @@ public class DolphinGraceListener implements Listener, CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
         if (!(sender instanceof Player)){
-            sender.sendMessage(ChatColor.RED + "This command can be only used by players");
+            sender.sendMessage(ChatColor.RED + "这个命令只能由玩家使用");
             return true;
         }
         Player player = (Player) sender;
@@ -35,13 +35,13 @@ public class DolphinGraceListener implements Listener, CommandExecutor {
         UUID playerId = player.getUniqueId();
         if (enabledPlayers.contains(playerId)) {
             enabledPlayers.remove(playerId);
-            player.sendMessage(ChatColor.GREEN + "Dolphin's Grace OFF.");
-            getLogger().info("DG disabled for " + player.getUniqueId());
+            player.sendMessage(ChatColor.GREEN + "海豚的恩惠已关闭");
+            getLogger().info("海豚的恩惠已关闭: " + player.getUniqueId());
         } else {
             if (!enabledPlayers.contains(playerId)){
                 enabledPlayers.add(playerId);
-                player.sendMessage(ChatColor.GREEN + "Dolphin's Grace ON.");
-                getLogger().info("DG enabled for " + player.getUniqueId());
+                player.sendMessage(ChatColor.GREEN + "海豚的恩惠已开启");
+                getLogger().info("海豚的恩惠已开启: " + player.getUniqueId());
             }
         }
         return true;

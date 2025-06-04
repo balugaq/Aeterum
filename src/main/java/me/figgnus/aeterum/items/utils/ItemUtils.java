@@ -95,7 +95,7 @@ public class ItemUtils  {
                     if (ItemUtils.isOurCustomItem(player.getInventory().getHelmet(), itemName)){
                         player.getInventory().setHelmet(null);
                     }
-                    player.sendMessage(ChatColor.GOLD + "Nemáš oprávnění používat tento předmět. Byl vyhozen z inventáře.");
+                    player.sendMessage(ChatColor.GOLD + "你没有权限使用这个物品。它已经被从背包中移除了。");
                     event.setCancelled(true);
                 }
             }
@@ -108,7 +108,7 @@ public class ItemUtils  {
             if (!player.hasPermission(permission)){
                 dropItemInFront(player, item);
                 player.getInventory().remove(item);
-                player.sendMessage( ChatColor.GOLD + "Nemáš oprávnění používat tento předmět. Byl vyhozen z inventáře.");
+                player.sendMessage( ChatColor.GOLD + "你没有权限使用这个物品。它已经被从背包中移除。");
                 event.setCancelled(true);
             }
         }

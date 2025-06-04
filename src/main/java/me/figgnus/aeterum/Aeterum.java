@@ -73,32 +73,32 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         }
 
         // Register groups
-        ItemStack toolsGroupItem = new CustomItemStack(Material.NETHERITE_PICKAXE, "&eNástroje +", "", "&a> Click to open");
+        ItemStack toolsGroupItem = new CustomItemStack(Material.NETHERITE_PICKAXE, "&e工具+", "", "&a> 单击打开");
         NamespacedKey toolsGroupId = new NamespacedKey(this, "tools_plus");
         ItemGroup toolsGroup = new ItemGroup(toolsGroupId, toolsGroupItem);
 
         // Register groups for VIP
-        ItemStack demeterSubGroupItem = new CustomItemStack(ItemUtils.createHead("d2fe0f2e6c0ffeefbb84c32e71876b68dcbf7ac9e8420a3d1bf593aa21a8374a"), "&ePatron - Demeter", "", "&a> Click to open");
+        ItemStack demeterSubGroupItem = new CustomItemStack(ItemUtils.createHead("d2fe0f2e6c0ffeefbb84c32e71876b68dcbf7ac9e8420a3d1bf593aa21a8374a"), "&e守护神 - 德墨忒耳（Demeter）", "", "&a> 单击打开");
         NamespacedKey demeterSubGroupId = new NamespacedKey(this, "demeter_group");
         ItemGroup demeterGroup = new CustomItemGroup(demeterSubGroupId, demeterSubGroupItem, GodsUtils.demeterBasePermission);
 
-        ItemStack dionysusSubGroupItem = new CustomItemStack(ItemUtils.createHead("b2b0a1ca399f35dc54519c4c996f9629a510c49938151f759ec8f07041e78566"), "&ePatron - Dionysus", "", "&a> Click to open");
+        ItemStack dionysusSubGroupItem = new CustomItemStack(ItemUtils.createHead("b2b0a1ca399f35dc54519c4c996f9629a510c49938151f759ec8f07041e78566"), "&e守护神 - 狄俄尼索斯（Dionysus）", "", "&a> 单击打开");
         NamespacedKey dionysusSubGroupId = new NamespacedKey(this, "dionysus_group");
         ItemGroup dionysusGroup = new CustomItemGroup(dionysusSubGroupId, dionysusSubGroupItem, GodsUtils.dionysusBasePermission);
 
-        ItemStack hadesSubGroupItem = new CustomItemStack(ItemUtils.createHead("492b27824182f9b81c7cf463ec7cd10b05e0640d38b56c8873196f19168f63ad"), "&ePatron - Hades", "", "&a> Click to open");
+        ItemStack hadesSubGroupItem = new CustomItemStack(ItemUtils.createHead("492b27824182f9b81c7cf463ec7cd10b05e0640d38b56c8873196f19168f63ad"), "&e守护神 - 哈迪斯（Hades）", "", "&a> 单击打开");
         NamespacedKey hadesSubGroupId = new NamespacedKey(this, "hades_group");
         ItemGroup hadesGroup = new CustomItemGroup(hadesSubGroupId, hadesSubGroupItem, GodsUtils.hadesBasePermission);
 
-        ItemStack hermesSubGroupItem = new CustomItemStack(ItemUtils.createHead("ae8e5160314bb7caa54d3e8d1be8e3a924b245e1c6a6d0a559c83d17f98ba4ce"), "&ePatron - Hermes", "", "&a> Click to open");
+        ItemStack hermesSubGroupItem = new CustomItemStack(ItemUtils.createHead("ae8e5160314bb7caa54d3e8d1be8e3a924b245e1c6a6d0a559c83d17f98ba4ce"), "&e守护神 - 赫尔墨斯（Hermes）", "", "&a> 单击打开");
         NamespacedKey hermesSubGroupId = new NamespacedKey(this, "hermes-group");
         ItemGroup hermesGroup = new CustomItemGroup(hermesSubGroupId, hermesSubGroupItem, GodsUtils.hermesBasePermission);
 
-        ItemStack poseidonSubGroupItem = new CustomItemStack(ItemUtils.createHead("1f716c1a80da85d5e6784c336b2583d61dc76de3d99a1984d3e593721e21327"), "&ePatron - Poseidon", "", "&a> Click to open");
+        ItemStack poseidonSubGroupItem = new CustomItemStack(ItemUtils.createHead("1f716c1a80da85d5e6784c336b2583d61dc76de3d99a1984d3e593721e21327"), "&e守护神 - 波塞冬（Poseidon）", "", "&a> 单击打开");
         NamespacedKey poseidonSubGroupId = new NamespacedKey(this, "poseidon_group");
         ItemGroup poseidonGroup = new CustomItemGroup(poseidonSubGroupId, poseidonSubGroupItem, GodsUtils.poseidonBasePermission);
 
-        ItemStack zeusSubGroupItem = new CustomItemStack(ItemUtils.createHead("dcd9ddf4fb9e25e62d2e98595d5168de2b3367ba78f3697be1c479f35102ad76"), "&ePatron - Zeus", "", "&a> Click to open");
+        ItemStack zeusSubGroupItem = new CustomItemStack(ItemUtils.createHead("dcd9ddf4fb9e25e62d2e98595d5168de2b3367ba78f3697be1c479f35102ad76"), "&e守护神 - 宙斯（Zeus）", "", "&a> 单击打开");
         NamespacedKey zeusSubGroupId = new NamespacedKey(this, "zeus_group");
         ItemGroup zeusGroup = new CustomItemGroup(zeusSubGroupId, zeusSubGroupItem, GodsUtils.zeusBasePermission);
 
@@ -173,31 +173,31 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
         randomizer.register(this);
 
         // Research
-        Research demeter_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "demeter_research"), 70001, "Research unlocked!", 1);
+        Research demeter_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "demeter_research"), 70001, "研究已解锁！", 1);
         demeter_research.addItems(betterBonemeal, growthPotion, flowerHorseTame, hoeOfHarvest);
         demeter_research.register();
 
-        Research dionysus_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "dionysus_research"), 70002, "Research unlocked!", 1);
+        Research dionysus_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "dionysus_research"), 70002, "研究已解锁！", 1);
         dionysus_research.addItems(drunkHorseTame, randomEffectPotion, partyAtmosphere, fireworkBall);
         dionysus_research.register();
 
-        Research hades_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hades_research"), 70003, "Research unlocked!", 1);
+        Research hades_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hades_research"), 70003, "研究已解锁！", 1);
         hades_research.addItems(zombiHorseTame, darknessPotion, portal, darkPearl);
         hades_research.register();
 
-        Research hermes_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hermes_research"), 70004, "Research unlocked!", 1);
+        Research hermes_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "hermes_research"), 70004, "研究已解锁！", 1);
         hermes_research.addItems(flyingItem, speedBoots, speedHorseTame, speedHorseAbility, messengerPack);
         hermes_research.register();
 
-        Research poseidon_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "poseidon_research"), 70005, "Research unlocked!", 1);
+        Research poseidon_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "poseidon_research"), 70005, "研究已解锁！", 1);
         poseidon_research.addItems(seaHorseTame, betterTrident, waterBreathingCrown);
         poseidon_research.register();
 
-        Research zeus_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "zeus_research"), 70006, "Research unlocked!", 1);
+        Research zeus_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "zeus_research"), 70006, "研究已解锁！", 1);
         zeus_research.addItems(breedingItem, pegasusTame, pegasusAbility, weatherChanger, lightningSpear);
         zeus_research.register();
 
-        Research tools_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "tools_research"), 70007, "Research unlocked!", 10);
+        Research tools_research = ItemResearch.createResearch(ItemResearch.createResearchKey(this, "tools_research"), 70007, "研究已解锁！", 10);
         tools_research.addItems(randomizer);
         tools_research.register();
 

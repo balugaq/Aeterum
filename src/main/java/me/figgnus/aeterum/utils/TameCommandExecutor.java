@@ -35,12 +35,12 @@ public class TameCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!(sender instanceof Player)){
-            sender.sendMessage("Only players can use this command.");
+            sender.sendMessage("只有玩家可以使用这条指令");
             return true;
         }
         Player player = (Player) sender;
         if (args.length == 0){
-            player.sendMessage("Usage: /tame <god>");
+            player.sendMessage("用法: /tame <god>");
             return true;
         }
         String action = args[0].toLowerCase();
