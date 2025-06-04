@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+@Deprecated
 public class CustomItemGroup extends ItemGroup {
     private final String permission;
     public CustomItemGroup(NamespacedKey key, ItemStack item, String permission) {

@@ -1,6 +1,8 @@
 package me.figgnus.aeterum;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.figgnus.aeterum.brewery_menu.BreweryMenu;
@@ -72,35 +74,39 @@ public class Aeterum extends JavaPlugin implements SlimefunAddon {
             // You could start an Auto-Updater for example
         }
 
+        ItemStack mainGroupItem = new CustomItemStack(Material.NETHERITE_PICKAXE, "&e众神之马", "", "&a> 单击打开");
+        NestedItemGroup mainGroup = new NestedItemGroup(new NamespacedKey(this, "main_group"), mainGroupItem);
+        mainGroup.register(this);
+
         // Register groups
         ItemStack toolsGroupItem = new CustomItemStack(Material.NETHERITE_PICKAXE, "&e工具+", "", "&a> 单击打开");
         NamespacedKey toolsGroupId = new NamespacedKey(this, "tools_plus");
-        ItemGroup toolsGroup = new ItemGroup(toolsGroupId, toolsGroupItem);
+        ItemGroup toolsGroup = new SubItemGroup(toolsGroupId, mainGroup, toolsGroupItem);
 
         // Register groups for VIP
         ItemStack demeterSubGroupItem = new CustomItemStack(ItemUtils.createHead("d2fe0f2e6c0ffeefbb84c32e71876b68dcbf7ac9e8420a3d1bf593aa21a8374a"), "&e守护神 - 德墨忒耳（Demeter）", "", "&a> 单击打开");
         NamespacedKey demeterSubGroupId = new NamespacedKey(this, "demeter_group");
-        ItemGroup demeterGroup = new CustomItemGroup(demeterSubGroupId, demeterSubGroupItem, GodsUtils.demeterBasePermission);
+        ItemGroup demeterGroup = new SubItemGroup(demeterSubGroupId, mainGroup, demeterSubGroupItem);
 
         ItemStack dionysusSubGroupItem = new CustomItemStack(ItemUtils.createHead("b2b0a1ca399f35dc54519c4c996f9629a510c49938151f759ec8f07041e78566"), "&e守护神 - 狄俄尼索斯（Dionysus）", "", "&a> 单击打开");
         NamespacedKey dionysusSubGroupId = new NamespacedKey(this, "dionysus_group");
-        ItemGroup dionysusGroup = new CustomItemGroup(dionysusSubGroupId, dionysusSubGroupItem, GodsUtils.dionysusBasePermission);
+        ItemGroup dionysusGroup = new SubItemGroup(dionysusSubGroupId, mainGroup, dionysusSubGroupItem);
 
         ItemStack hadesSubGroupItem = new CustomItemStack(ItemUtils.createHead("492b27824182f9b81c7cf463ec7cd10b05e0640d38b56c8873196f19168f63ad"), "&e守护神 - 哈迪斯（Hades）", "", "&a> 单击打开");
         NamespacedKey hadesSubGroupId = new NamespacedKey(this, "hades_group");
-        ItemGroup hadesGroup = new CustomItemGroup(hadesSubGroupId, hadesSubGroupItem, GodsUtils.hadesBasePermission);
+        ItemGroup hadesGroup = new SubItemGroup(hadesSubGroupId, mainGroup, hadesSubGroupItem);
 
         ItemStack hermesSubGroupItem = new CustomItemStack(ItemUtils.createHead("ae8e5160314bb7caa54d3e8d1be8e3a924b245e1c6a6d0a559c83d17f98ba4ce"), "&e守护神 - 赫尔墨斯（Hermes）", "", "&a> 单击打开");
         NamespacedKey hermesSubGroupId = new NamespacedKey(this, "hermes-group");
-        ItemGroup hermesGroup = new CustomItemGroup(hermesSubGroupId, hermesSubGroupItem, GodsUtils.hermesBasePermission);
+        ItemGroup hermesGroup = new SubItemGroup(hermesSubGroupId, mainGroup, hermesSubGroupItem);
 
         ItemStack poseidonSubGroupItem = new CustomItemStack(ItemUtils.createHead("1f716c1a80da85d5e6784c336b2583d61dc76de3d99a1984d3e593721e21327"), "&e守护神 - 波塞冬（Poseidon）", "", "&a> 单击打开");
         NamespacedKey poseidonSubGroupId = new NamespacedKey(this, "poseidon_group");
-        ItemGroup poseidonGroup = new CustomItemGroup(poseidonSubGroupId, poseidonSubGroupItem, GodsUtils.poseidonBasePermission);
+        ItemGroup poseidonGroup = new SubItemGroup(poseidonSubGroupId, mainGroup, poseidonSubGroupItem);
 
         ItemStack zeusSubGroupItem = new CustomItemStack(ItemUtils.createHead("dcd9ddf4fb9e25e62d2e98595d5168de2b3367ba78f3697be1c479f35102ad76"), "&e守护神 - 宙斯（Zeus）", "", "&a> 单击打开");
         NamespacedKey zeusSubGroupId = new NamespacedKey(this, "zeus_group");
-        ItemGroup zeusGroup = new CustomItemGroup(zeusSubGroupId, zeusSubGroupItem, GodsUtils.zeusBasePermission);
+        ItemGroup zeusGroup = new SubItemGroup(zeusSubGroupId, mainGroup, zeusSubGroupItem);
 
 
         // Initialize class so that configureMeta() method in constructor takes place
