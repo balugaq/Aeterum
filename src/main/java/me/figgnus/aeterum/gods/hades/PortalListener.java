@@ -34,7 +34,7 @@ public class PortalListener extends SlimefunItem implements Listener {
             }
             Location loc = player.getLocation();
             createPortal(loc);
-            player.sendMessage(ChatColor.GOLD + "Přemísťuješ se na nové místo. Zůstaň stát.");
+            player.sendMessage(ChatColor.GOLD + "请勿在传送时移动");
             player.getWorld().playSound(loc, Sound.BLOCK_PORTAL_TRAVEL, 1.0F, 1.0F);
         }
     }

@@ -141,29 +141,29 @@ public class BreweryMenu {
         SlimefunItem vajecnak = new SlimefunItem(breweryGroup, vajecnak_stack, MENU_BOTTLE, vajecnak_recipe);
 
         //register items
-        cauldron.register(plugin);
-        skotska_whisky.register(plugin);
-        irska_whisky.register(plugin);
-        bourbon.register(plugin);
-        psenicne_pivo.register(plugin);
-        pivo.register(plugin);
-        tmavy_lezak.register(plugin);
-        cervene_vino.register(plugin);
-        bile_vino.register(plugin);
-        medovina.register(plugin);
-        jablecna_medovina.register(plugin);
-        jablecny_most.register(plugin);
-        jablecny_liker.register(plugin);
-        rum.register(plugin);
-        vodka.register(plugin);
-        houbova_vodka.register(plugin);
-        gin.register(plugin);
-        tequila.register(plugin);
-        absinth.register(plugin);
-        zeleny_absinth.register(plugin);
-        bramborova_polevka.register(plugin);
-        kava.register(plugin);
-        vajecnak.register(plugin);
+        // cauldron.register(plugin);
+        // skotska_whisky.register(plugin);
+        // irska_whisky.register(plugin);
+        // bourbon.register(plugin);
+        // psenicne_pivo.register(plugin);
+        // pivo.register(plugin);
+        // tmavy_lezak.register(plugin);
+        // cervene_vino.register(plugin);
+        // bile_vino.register(plugin);
+        // medovina.register(plugin);
+        // jablecna_medovina.register(plugin);
+        // jablecny_most.register(plugin);
+        // jablecny_liker.register(plugin);
+        // rum.register(plugin);
+        // vodka.register(plugin);
+        // houbova_vodka.register(plugin);
+        // gin.register(plugin);
+        // tequila.register(plugin);
+        // absinth.register(plugin);
+        // zeleny_absinth.register(plugin);
+        // bramborova_polevka.register(plugin);
+        // kava.register(plugin);
+        // vajecnak.register(plugin);
 
         // Research for brewery items
         List<SlimefunItem> items = Arrays.asList(skotska_whisky,irska_whisky,bourbon,psenicne_pivo,pivo,tmavy_lezak,cervene_vino,bile_vino,medovina,jablecna_medovina,

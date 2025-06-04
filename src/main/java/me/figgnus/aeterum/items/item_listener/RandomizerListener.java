@@ -41,7 +41,7 @@ public class RandomizerListener extends SlimefunItem implements Listener {
         ItemStack item = player.getInventory().getItemInMainHand();
         if (ItemUtils.isOurCustomItem(item, getItemName())){
             if (!player.hasPermission("trowel.use")){
-                player.sendMessage(ChatColor.RED + "Nemáš oprávnění použít tento předmět");
+                player.sendMessage(ChatColor.RED + "你没有权限使用这个物品");
                 return;
             }
             //Check cooldown
@@ -66,7 +66,7 @@ public class RandomizerListener extends SlimefunItem implements Listener {
                 if (event.getAction() == Action.RIGHT_CLICK_BLOCK){
                     // Check if player has the block in inventory in survival mode
                     if (player.getGameMode() == GameMode.SURVIVAL && !hasMaterialInInventory(player, selectMaterial)) {
-                        player.sendMessage(ChatColor.RED + "Nemáš dostatek bloků v inventáři");
+                        player.sendMessage(ChatColor.RED + "你的背包里没有足够的方块");
                         return;
                     }
                     // Place the block if the adjacent block is air

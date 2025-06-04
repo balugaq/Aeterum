@@ -1,49 +1,50 @@
 package me.figgnus.aeterum.items;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import me.figgnus.aeterum.items.utils.ItemUtils;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionType;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import me.figgnus.aeterum.items.utils.ItemUtils;
 
 public class SlimefunCustomItems {
 
-    // Items
-    public static SlimefunItemStack BETTER_BONEMEAL = new SlimefunItemStack("BETTER_BONEMEAL", Material.BONE_MEAL, "&aBetter Bonemeal", "", "&7Bonemeal který se dá použít na Cactus a Sugar Cane");
-    public static SlimefunItemStack GROWTH_POTION = new SlimefunItemStack("GROWTH_POTION", Material.POTION, "&aGrowth Potion", "", "&7Lektvar který urychlý růst rostlin v okolí hráče");
-    public static SlimefunItemStack FL0WER_HORSE_TAME = new SlimefunItemStack("FLOWER_HORSE_TAME", Material.APPLE, "&aSweet Apple", "", "&7Jablko kterým Demeter může ochočit svého koňe");
-    public static SlimefunItemStack DRUNK_HORSE_TAME = new SlimefunItemStack("DRUNK_HORSE_TAME", Material.APPLE, "&aFermented Apple", "", "&7Jablko kterým Dionysus může ochočit svého koňe");
-    public static SlimefunItemStack ZOMBIE_HORSE_TAME = new SlimefunItemStack("ZOMBIE_HORSE_TAME", Material.APPLE, "&aPoisoned Apple", "", "&7Jablko kterým Hades může ochočit svého koňe");
-    public static SlimefunItemStack FLYING_ITEM = new SlimefunItemStack("FLYING_ITEM", Material.STONE_SWORD, "&aFlying Wand", "", "&7Málo raketek? Použij toto.");
-    public static SlimefunItemStack SPEED_BOOTS = new SlimefunItemStack("SPEED_BOOTS", Material.IRON_BOOTS, "&aSpeed Boots", "", "&7Tyhle botky vypadají rychle. Nezakopni.");
-    public static SlimefunItemStack SPEED_HORSE_TAME = new SlimefunItemStack("SPEED_HORSE_TAME", Material.APPLE, "&aHasted Apple", "", "&7Jablko kterým Hermes může ochočit svého koňe");
-    public static SlimefunItemStack HORSE_SPEED_POTION = new SlimefunItemStack("HORSE_SPEED_POTION", Material.POTION, "&aHorse Speed Potion", "", "&7Sedni na svého koně, napij se a drž se");
-    public static SlimefunItemStack SEA_HORSE_TAME = new SlimefunItemStack("SEA_HORSE_TAME", Material.APPLE, "&aSalty Apple", "", "&7Jablko kterým Poseidon může ochočit svého koňe");
-    public static SlimefunItemStack PEGASUS_TAME = new SlimefunItemStack("PEGASUS_TAME", Material.APPLE, "&aLevity Apple", "", "&7Jablko kterým Zeus může ochočit svého koňe");
-    public static SlimefunItemStack BREEDING_ITEM = new SlimefunItemStack("BREEDING_ITEM", Material.SLIME_BALL, "&aAnimal Feed", "", "&7Nakrm zvíře");
-    public static SlimefunItemStack HORSE_LEVITATE_POTION = new SlimefunItemStack("HORSE_LEVITATE_POTION", Material.POTION, "&aHorse Levitate Potion", "", "&7Napij se když si na svém koni");
-    public static SlimefunItemStack RANDOMIZER = new SlimefunItemStack("RANDOMIZER", Material.STICK, "&aRandomizer", "", "&7Položí náhodný block s hotbaru");
-    public static SlimefunItemStack BETTER_TRIDENT = new SlimefunItemStack("BETTER_TRIDENT", Material.TRIDENT, "&aBetter Trident", "", "&7Zbraň hodná krále moří");
-    public static SlimefunItemStack WATTER_BREATHING_CROWN = new SlimefunItemStack("WATER_BREATHING_CROWN", Material.GOLDEN_HELMET, "&aCrown of the Seas", "", "&7Pomáhá dýchat pod vodou.");
-    public static SlimefunItemStack WEATHER_CHANGER = new SlimefunItemStack("WEATHER_CHANGER", Material.POTION, "&aPotion of Storm", "", "&7Moc slunečno? Tohle by mohlo být řešení");
-    public static SlimefunItemStack LIGHTNING_SPEAR = new SlimefunItemStack("LIGHTNING_SPEAR", Material.TRIDENT, "&aLightning Spear", "", "&7Zbraň hodná vládce Olympu");
-    public static SlimefunItemStack RANDOM_EFFECT_POTION = new SlimefunItemStack("RANDOM_EFFECT_POTION", Material.POTION, "&aMysterious Brew", "", "&7Kdo vý co se může stát");
-    public static SlimefunItemStack PARTY_ATMOSPHERE = new SlimefunItemStack("PARTY_ATMOSPHERE", Material.POTION, "&aParty Atmosphere", "", "&7Let's Party!!!");
-    public static SlimefunItemStack PARTY_BALL = new SlimefunItemStack("PARTY_BALL", Material.SNOWBALL, "&aParty Ball", "", "&7Pozor na výbuch");
-    public static SlimefunItemStack DARKNESS_POTION = new SlimefunItemStack("DARKNESS_POTION", Material.POTION, "&aDarkness", "", "&7Oslep své nepřátele");
-    public static SlimefunItemStack PORTAL_CREATOR = new SlimefunItemStack("PORTAL_CREATOR", Material.SPLASH_POTION, "&aDark Portal", "", "&7Kde se objevíš?");
-    public static SlimefunItemStack DARK_PEARL = new SlimefunItemStack("DARK_PEARL", Material.ENDER_PEARL, "&aDark Pearl", "", "&7Prostě Ender Pearl. Možná trochu lepší.");
-    public static SlimefunItemStack MESSENGER_BAG = new SlimefunItemStack("MESSENGER_BAG", ItemUtils.createHead("a014f8712f558d20c1477610d82ec32673124647eb1076437dd2cdd2a8637e4a"), "&aMerchant's Satchel", "", "&7Bůh obchodníků potřebuje pořádnou brašnu.");
-    public static SlimefunItemStack HOE_OF_HARVEST = new SlimefunItemStack("HOE_OF_HARVEST", Material.STICK, "&aSythe of the Harvest", "", "&7Jestli-že někdo vý jak farmařit tak jsi to ty.");
+// Items
+        public static SlimefunItemStack BETTER_BONEMEAL = new SlimefunItemStack("BETTER_BONEMEAL", Material.BONE_MEAL, "&a优质骨粉", "", "&7可对仙人掌和甘蔗使用的骨粉");
+        public static SlimefunItemStack GROWTH_POTION = new SlimefunItemStack("GROWTH_POTION", Material.POTION, "&a成长药水", "", "&7可加速玩家周围植物生长的药水");
+        public static SlimefunItemStack FL0WER_HORSE_TAME = new SlimefunItemStack("FLOWER_HORSE_TAME", Material.APPLE, "&a甜苹果", "", "&7德墨忒耳（Demeter）可以用这颗苹果驯服她的马");
+        public static SlimefunItemStack DRUNK_HORSE_TAME = new SlimefunItemStack("DRUNK_HORSE_TAME", Material.APPLE, "&a发酵苹果", "", "&7狄俄尼索斯（Dionysus）可以用这颗苹果驯服他的马");
+        public static SlimefunItemStack ZOMBIE_HORSE_TAME = new SlimefunItemStack("ZOMBIE_HORSE_TAME", Material.APPLE, "&a毒苹果", "", "&7哈迪斯（Hades）可以用这颗苹果驯服他的马");
+        public static SlimefunItemStack FLYING_ITEM = new SlimefunItemStack("FLYING_ITEM", Material.STONE_SWORD, "&a飞行之杖", "", "&7火箭不够用？试试这个。");
+        public static SlimefunItemStack SPEED_BOOTS = new SlimefunItemStack("SPEED_BOOTS", Material.IRON_BOOTS, "&a速度之靴", "", "&7这双靴子看起来很快速。别绊倒了。");
+        public static SlimefunItemStack SPEED_HORSE_TAME = new SlimefunItemStack("SPEED_HORSE_TAME", Material.APPLE, "&a油炸苹果", "", "&7赫尔墨斯（Hermes）可以用这颗苹果驯服他的马");
+        public static SlimefunItemStack HORSE_SPEED_POTION = new SlimefunItemStack("HORSE_SPEED_POTION", Material.POTION, "&a马匹速度药水", "", "&7骑上你的马，喝下它，抓紧了");
+        public static SlimefunItemStack SEA_HORSE_TAME = new SlimefunItemStack("SEA_HORSE_TAME", Material.APPLE, "&a腌苹果", "", "&7波塞冬（Poseidon）可以用这颗苹果驯服他的马");
+        public static SlimefunItemStack PEGASUS_TAME = new SlimefunItemStack("PEGASUS_TAME", Material.APPLE, "&a漂浮苹果", "", "&7宙斯（Zeus）可以用这颗苹果驯服他的马");
+        public static SlimefunItemStack BREEDING_ITEM = new SlimefunItemStack("BREEDING_ITEM", Material.SLIME_BALL, "&a动物饲料", "", "&7喂食动物");
+        public static SlimefunItemStack HORSE_LEVITATE_POTION = new SlimefunItemStack("HORSE_LEVITATE_POTION", Material.POTION, "&a马匹漂浮药水", "", "&7骑在马上时喝下它");
+        public static SlimefunItemStack RANDOMIZER = new SlimefunItemStack("RANDOMIZER", Material.STICK, "&a随机方块放置器", "", "&7放置一个物品栏中的随机方块");
+        public static SlimefunItemStack BETTER_TRIDENT = new SlimefunItemStack("BETTER_TRIDENT", Material.TRIDENT, "&a优质三叉戟", "", "&7值得海洋之王使用的武器");
+        public static SlimefunItemStack WATTER_BREATHING_CROWN = new SlimefunItemStack("WATER_BREATHING_CROWN", Material.GOLDEN_HELMET, "&a海洋之冠", "", "&7帮助你在水下呼吸。");
+        public static SlimefunItemStack WEATHER_CHANGER = new SlimefunItemStack("WEATHER_CHANGER", Material.POTION, "&a风暴药水", "", "&7阳光太强烈？这可能是解决方案");
+        public static SlimefunItemStack LIGHTNING_SPEAR = new SlimefunItemStack("LIGHTNING_SPEAR", Material.TRIDENT, "&a闪电矛", "", "&7值得奥林匹斯之主使用的武器");
+        public static SlimefunItemStack RANDOM_EFFECT_POTION = new SlimefunItemStack("RANDOM_EFFECT_POTION", Material.POTION, "&a神秘药水", "", "&7会发生什么，谁也说不准");
+        public static SlimefunItemStack PARTY_ATMOSPHERE = new SlimefunItemStack("PARTY_ATMOSPHERE", Material.POTION, "&a派对药水", "", "&7让我们嗨起来!!!");
+        public static SlimefunItemStack PARTY_BALL = new SlimefunItemStack("PARTY_BALL", Material.SNOWBALL, "&a派对球", "", "&7小心爆炸");
+        public static SlimefunItemStack DARKNESS_POTION = new SlimefunItemStack("DARKNESS_POTION", Material.POTION, "&a黑暗药水", "", "&7致盲你的敌人");
+        public static SlimefunItemStack PORTAL_CREATOR = new SlimefunItemStack("PORTAL_CREATOR", Material.SPLASH_POTION, "&a黑暗传送药水", "", "&7你会出现在哪里？");
+        public static SlimefunItemStack DARK_PEARL = new SlimefunItemStack("DARK_PEARL", Material.ENDER_PEARL, "&a黑暗珍珠", "", "&7只是普通的末影珍珠。可能稍微好一点。");
+        public static SlimefunItemStack MESSENGER_BAG = new SlimefunItemStack("MESSENGER_BAG", ItemUtils.createHead("a014f8712f558d20c1477610d82ec32673124647eb1076437dd2cdd2a8637e4a"), "&a商人挎包", "", "&7商人需要一个像样的背包。");
+        public static SlimefunItemStack HOE_OF_HARVEST = new SlimefunItemStack("HOE_OF_HARVEST", Material.STICK, "&a丰收之镰", "", "&7如果有人擅长务农，那一定是你。");
 
 
     // Helper Items
@@ -116,9 +117,9 @@ public class SlimefunCustomItems {
             null, null, null,
     };
     public static final ItemStack[] RANDOMIZER_RECIPE = {
-            null, null, null,
+            new ItemStack(Material.BONE_BLOCK), null, null,
             null, new ItemStack(Material.BONE_BLOCK), null,
-            null, null, null,
+            null, null, new ItemStack(Material.BONE_BLOCK),
     };
     public static final ItemStack[] BETTER_TRIDENT_RECIPE = {
             null, new ItemStack(Material.BOOK), null,
@@ -131,54 +132,54 @@ public class SlimefunCustomItems {
             null, null, null,
     };
     public static final ItemStack[] WEATHER_CHANGER_RECIPE = {
-            new ItemStack(Material.TURTLE_EGG), null, null,
+            new ItemStack(Material.TURTLE_EGG), new ItemStack(Material.TURTLE_EGG), new ItemStack(Material.APPLE),
             null, null, null,
             null, null, null,
     };
     public static final ItemStack[] LIGHTNING_SPEAR_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.TRIDENT), null,
-            null, null, null,
+            null, new ItemStack(Material.LIGHTNING_ROD), null,
+            new ItemStack(Material.LIGHTNING_ROD), new ItemStack(Material.TRIDENT), new ItemStack(Material.LIGHTNING_ROD),
+            null, new ItemStack(Material.LIGHTNING_ROD), null,
     };
     public static final ItemStack[] RANDOM_EFFECT_POTION_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.GLASS_BOTTLE), null,
-            null, null, null,
+            null, new ItemStack(Material.POISONOUS_POTATO), null,
+            new ItemStack(Material.BEETROOT), new ItemStack(Material.GLASS_BOTTLE), new ItemStack(Material.BEETROOT),
+            null, new ItemStack(Material.BEETROOT), null,
     };
     public static final ItemStack[] PARTY_ATMOSPHERE_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.GLASS_BOTTLE), null,
-            null, null, null,
+            null, new ItemStack(Material.GOLD_INGOT), null,
+            new ItemStack(Material.BEETROOT), new ItemStack(Material.GLASS_BOTTLE), new ItemStack(Material.BEETROOT),
+            null, new ItemStack(Material.GOLDEN_HORSE_ARMOR), null,
     };
     public static final ItemStack[] PARTY_BALL_RECIPE = {
-            null, null, null,
+            null, new ItemStack(Material.GOLD_INGOT), null,
+            new ItemStack(Material.SNOWBALL), new ItemStack(Material.SNOWBALL), new ItemStack(Material.SNOWBALL),
             null, new ItemStack(Material.SNOWBALL), null,
-            null, null, null,
     };
     public static final ItemStack[] DARKNESS_POTION_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.GLASS), null,
-            null, null, null,
+            null, new ItemStack(Material.BLACK_DYE), null,
+            new ItemStack(Material.INK_SAC), new ItemStack(Material.GLASS), new ItemStack(Material.INK_SAC),
+            null, new ItemStack(Material.INK_SAC), null,
     };
     public static final ItemStack[] PORTAL_CREATOR_RECIPE = {
             null, null, null,
-            null, new ItemStack(Material.GLASS), null,
-            null, null, null,
+            new ItemStack(Material.ENDER_EYE), new ItemStack(Material.GLASS), new ItemStack(Material.ENDER_EYE),
+            null, new ItemStack(Material.ENDER_PEARL), null,
     };
     public static final ItemStack[] DARK_PEARL_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.ENDER_PEARL), null,
-            null, null, null,
+            new ItemStack(Material.ENDER_PEARL), new ItemStack(Material.OBSIDIAN), new ItemStack(Material.ENDER_PEARL),
+            new ItemStack(Material.OBSIDIAN), new ItemStack(Material.ENDER_PEARL), new ItemStack(Material.OBSIDIAN),
+            new ItemStack(Material.ENDER_PEARL), new ItemStack(Material.OBSIDIAN), new ItemStack(Material.ENDER_PEARL),
     };
     public static final ItemStack[] MESSENGER_BAG_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.LEATHER), null,
-            null, null, null,
+            new ItemStack(Material.LEATHER), new ItemStack(Material.EMERALD), new ItemStack(Material.LEATHER),
+            new ItemStack(Material.EMERALD), new ItemStack(Material.LEATHER), new ItemStack(Material.EMERALD),
+            new ItemStack(Material.LEATHER), new ItemStack(Material.EMERALD), new ItemStack(Material.LEATHER),
     };
     public static final ItemStack[] HOE_OF_HARVEST_RECIPE = {
-            null, null, null,
-            null, new ItemStack(Material.IRON_HOE), null,
-            null, null, null,
+            new ItemStack(Material.COCOA_BEANS), new ItemStack(Material.WHEAT), new ItemStack(Material.COCOA_BEANS),
+            new ItemStack(Material.CARROT), new ItemStack(Material.IRON_HOE), new ItemStack(Material.POTATO),
+            new ItemStack(Material.COCOA_BEANS), new ItemStack(Material.BEETROOT), new ItemStack(Material.COCOA_BEANS),
     };
 
 
