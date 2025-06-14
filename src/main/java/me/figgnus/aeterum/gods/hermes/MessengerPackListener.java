@@ -82,7 +82,7 @@ public class MessengerPackListener extends SlimefunItem implements Listener {
     }
 
     public Inventory loadInventory(UUID playerUUID) {
-        Inventory inventory = Bukkit.createInventory(null, 54, "Merchant's Bag");
+        Inventory inventory = Bukkit.createInventory(null, 54, "商人的包袱");
         File inventoryFile = new File(inventoryFolder, playerUUID.toString() + ".yml");
         if (inventoryFile.exists()) {
             FileConfiguration inventoryConfig = YamlConfiguration.loadConfiguration(inventoryFile);
